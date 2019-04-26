@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+  <h2 align="center">Registrazione</h2>
+
+
+
+<form class="form-signin" action="" method="post">
+    {% csrf_token %}
+        <label for="form.id_username" class="sr-only">Username</label>
+        <input type="text" id="form.id_username" class="form-control" name="{{ form.username.html_name}}" placeholder="Username" required autofocus>
+        <p>{{form.id_username.error}}</p>
+        <p></p>
+        <label for="form.id_password1" class="sr-only">Password</label>
+        <input type="password" id="form.id_password1" class="form-control" placeholder="Password" required name="{{ form.password1.html_name}}">
+
+        <label for="form.id_password2" class="sr-only">Password</label>
+        <input type="password" id="form.id_password2" class="form-control" placeholder="Conferma Password" required name="{{ form.password2.html_name}}">
+
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+              {{form.errors}}
+            </div>
+        {% endif %}
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+
+<!--
+
+    <form method='POST'> {% csrf_token %}
+      {{ form }}
+      <button type='submit' class='btn btn-default'>Submit</button>
+    </form>
+-->
+
+
+{% endblock %}
+
+
+

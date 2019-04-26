@@ -1,0 +1,62 @@
+{% load static %}
+<html>
+{% block head %}
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Gig Advisor{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/signin.css" %}" rel="stylesheet">
+
+
+  </head>
+{% endblock %}
+</head>
+{% block body %}
+<body>
+        {% block nav %}
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            {% block nav_content %}
+                {% block navbar_brand %}
+                    <a class="navbar-brand" href="#">Gig Advisor</a>
+                {% endblock %}
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {% block navbar_collapse %}
+                <div class="collapse navbar-collapse" id="navbar">
+                    {% block navbar_collapse_nav %}{% endblock %}
+                </div>
+                {% endblock %}
+            {% endblock %}
+        </nav>
+        {% endblock %}
+
+
+
+
+        <main role="main" class="container">
+            {% block content %}
+            {% endblock content %}
+        </main>
+
+
+
+        {% block foot %}
+            <footer class="footer">
+              <div class="container">
+                {% block footer %}
+               <span class="text-muted">Gig Advisor &reg; - All rights reserved</span>{% endblock %}
+                </div>
+            </footer>
+        {% endblock %}
+</body>
+{% endblock %}
+</html>
+

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Lista piattaforme</h1>
+  {% if platforms_list %}
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            {% for piattaforma in platforms_list %}
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="/media/{{piattaforma.photo}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{piattaforma.nome}}</h5>
+                  <p class="card-text">{{piattaforma.categoria}}</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+    </div>
+
+
+  {% else %}
+    <p>Nessuna piattaforma inserita!</p>
+  {% endif %}
+<div>
+<p><a href="{% url 'logout' %}">logout</a></p>
+</div>
+
+{% else %}
+  <p>Non sei loggato</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}
+
