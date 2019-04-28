@@ -10,7 +10,7 @@ class Platform(models.Model):
         return self.nome
 
 class Recensioni(models.Model):
-    data = models.DateTimeField('date published')
+    data = models.DateTimeField('date published', auto_now=True)
     titolo = models.CharField(max_length=200)
     descrizione = models.CharField(max_length=2000)
     platform = models.ForeignKey(Platform, on_delete=models.CASCADE, null=True)

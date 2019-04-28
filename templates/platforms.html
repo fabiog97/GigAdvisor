@@ -3,10 +3,15 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<h1>Lista piattaforme</h1>
-  {% if platforms_list %}
+{% if platforms_list %}
+<main role="main">
 
-
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Piattaforme</h1>
+          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+        </div>
+      </section>
     <div class="album py-5 bg-light">
         <div class="container">
           <div class="row">
@@ -17,7 +22,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{piattaforma.nome}}</h5>
                   <p class="card-text">{{piattaforma.categoria}}</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <a href="http://127.0.0.1:8000/GigAdvisor/platforms/new/" class="btn btn-primary">Go somewhere</a>
               </div>
               </div>
             </div>
@@ -25,11 +30,10 @@
           </div>
         </div>
     </div>
-
-
   {% else %}
     <p>Nessuna piattaforma inserita!</p>
   {% endif %}
+</main>
 <div>
 <p><a href="{% url 'logout' %}">logout</a></p>
 </div>
