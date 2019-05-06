@@ -18,4 +18,3 @@ class Recensioni(models.Model):
     def __str__(self):
         return self.titolo
 
-

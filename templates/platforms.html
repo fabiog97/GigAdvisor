@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
+{% block styles %}
+<!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/album.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
 {% if platforms_list %}
-<main role="main">
-
+ <main role="main">
       <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Piattaforme</h1>
           <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
         </div>
       </section>
-    <div class="album py-5 bg-light">
+
+
+        <div class="album py-5 bg-light">
         <div class="container">
           <div class="row">
             {% for piattaforma in platforms_list %}
@@ -20,9 +28,9 @@
               <div class="card mb-4 box-shadow">
                 <img class="card-img-top" src="/media/{{piattaforma.photo}}" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">{{piattaforma.nome}}</h5>
+                    <a href="{% url 'recensione_platform' piattaforma.id %}"><h5 class="card-title">{{piattaforma.nome}}</h5></a>
                   <p class="card-text">{{piattaforma.categoria}}</p>
-                  <a href="http://127.0.0.1:8000/GigAdvisor/platforms/new/" class="btn btn-primary">Go somewhere</a>
+                  <a href="{% url 'recensioni_new' piattaforma.id %}" class="btn btn-primary">Scrivi recensione</a>
               </div>
               </div>
             </div>
@@ -33,11 +41,7 @@
   {% else %}
     <p>Nessuna piattaforma inserita!</p>
   {% endif %}
-</main>
-<div>
-<p><a href="{% url 'logout' %}">logout</a></p>
-</div>
-
+ </main>
 {% else %}
   <p>Non sei loggato</p>
   <a href="{% url 'login' %}">login</a>
