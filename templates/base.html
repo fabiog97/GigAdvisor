@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     {% block styles %}
     {% endblock %}
 
+    {% block scripts %}
+    {% endblock %}
   </head>
 {% endblock %}
 </head>
@@ -23,7 +24,11 @@
                     <a class="navbar-brand" href="http://127.0.0.1:8000/GigAdvisor/platforms/">Gig Advisor</a>
                 {% endblock %}
 
+                {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}"><button type="button" class="btn btn-light">Logout</button></a>
+                {% else %}
+                <a href="{% url 'login' %}"><button type="button" class="btn btn-light">Login</button></a>
+                {% endif %}
             {% endblock %}
         </nav>
         {% endblock %}
@@ -32,8 +37,8 @@
 
 
 
-            {% block content %}
-            {% endblock content %}
+        {% block content %}
+        {% endblock content %}
 
 
 
