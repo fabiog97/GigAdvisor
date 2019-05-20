@@ -47,10 +47,13 @@ def success(request):
 
 
 def recensione_platform (request, id):
-    platform = Platform.objects.get(id=id)
+    platform_id = Platform.objects.get(id=id)
     context = {
-        'nome': platform.nome,
-        'categoria': platform.categoria,
-        'photo': platform.photo,
+        'nome': platform_id.nome,
+        'categoria': platform_id.categoria,
+        'photo': platform_id.photo,
     }
+
+    recensioni = Recensioni.objects.filter(platform=platform_id)
+    #passare la variabile 'recensioni' al metodo render
     return render(request, 'reviews_platform.html',context)
