@@ -12,30 +12,43 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-<div>
+<div class="container py-5">
+     <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Registrazione</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form class="form-signin" action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="form.id_username" class="sr-only">Username</label>
+                            <input type="text" id="form.id_username" class="form-control" name="{{ form.username.html_name}}" placeholder="Username" required autofocus>
+                            <p>{{form.id_username.error}}</p>
+                            <p></p>
+                        </div>
 
-<h2 align="center">Registrazione</h2>
-<form class="form-signin" action="" method="post">
-    {% csrf_token %}
-        <label for="form.id_username" class="sr-only">Username</label>
-        <input type="text" id="form.id_username" class="form-control" name="{{ form.username.html_name}}" placeholder="Username" required autofocus>
-        <p>{{form.id_username.error}}</p>
-        <p></p>
-        <label for="form.id_password1" class="sr-only">Password</label>
-        <input type="password" id="form.id_password1" class="form-control" placeholder="Password" required name="{{ form.password1.html_name}}">
+                        <div class="form-group">
+                            <label for="form.id_password1" class="sr-only">Password</label>
+                            <input type="password" id="form.id_password1" class="form-control" placeholder="Password" required name="{{ form.password1.html_name}}">
+                        </div>
 
-        <label for="form.id_password2" class="sr-only">Password</label>
-        <input type="password" id="form.id_password2" class="form-control" placeholder="Conferma Password" required name="{{ form.password2.html_name}}">
+                        <div class="form-group">
+                            <label for="form.id_password2" class="sr-only">Password</label>
+                            <input type="password" id="form.id_password2" class="form-control" placeholder="Conferma Password" required name="{{ form.password2.html_name}}">
+                        </div>
 
-        {% if form.errors %}
-            <div class="alert alert-danger" role="alert">
-              {{form.errors}}
+                            {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                  {{form.errors}}
+                                </div>
+                            {% endif %}
+
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
             </div>
-        {% endif %}
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-</form>
-
+        </div>
+     </div>
 </div>
 <!--
 

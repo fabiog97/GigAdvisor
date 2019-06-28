@@ -14,10 +14,18 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'register.html'
 
+def team(request):
+    context = {'team_page': "active"}  # new info here
+    return render(request, 'team.html', context)
+
+def home(request):
+    context = {'home_page': "active"}  # new info here
+    return render(request, 'home.html', context)
+
 
 class PlatformListView(generic.ListView):
     model = Platform
-
+    context = {'home_page': "active"}
     context_object_name = 'platforms_list'
     queryset = Platform.objects.all()
     template_name = 'platforms.html'  # Specify your own template name/location
@@ -31,8 +39,10 @@ def recensione_new(request, id):
             #r = form.save()
             titolo = form.cleaned_data['titolo']
             descrizione = form.cleaned_data['descrizione']
+            sicurezza = int(request.POST['sicurezza'])
+
             platform = Platform.objects.get(id=id)
-            r = Recensioni(titolo=titolo, descrizione=descrizione,platform=platform)
+            r = Recensioni(titolo=titolo, descrizione=descrizione,platform=platform, sicurezza=sicurezza)
             r.save()
 
             return render(request, 'success_review.html')
@@ -45,15 +55,19 @@ def success(request):
     return render(request, 'platforms.html')
 
 
-
 def recensione_platform (request, id):
-    platform_id = Platform.objects.get(id=id)
+    platform = Platform.objects.get(id=id)
+
+
+    recensioni = Recensioni.objects.filter(platform__id=platform.id).values('titolo','descrizione','data','platform')
+
+
+
     context = {
-        'nome': platform_id.nome,
-        'categoria': platform_id.categoria,
-        'photo': platform_id.photo,
+        'platform': platform,
+        'recensioni': recensioni,
     }
 
-    recensioni = Recensioni.objects.filter(platform=platform_id)
-    #passare la variabile 'recensioni' al metodo render
+
+
     return render(request, 'reviews_platform.html',context)

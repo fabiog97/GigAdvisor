@@ -1,24 +1,74 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+
 {% block styles %}
 <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-slider.css' %}" rel="stylesheet">
+
 {% endblock %}
+
+{% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/bootstrap-slider.js' %}"></script>
+    <script>
+    $( document ).ready(function() {
+        $("#formControlRange").slider({
+            tooltip: 'always'
+        });
+
+        $("#formControlRange").on("slide", function(slideEvt) {
+            $("#formControlRangeValue").text(slideEvt.value);
+        });
+
+
+    });
+    </script>
+
+{% endblock %}
+
+
 
 {% block title %}New Review{% endblock %}
 
 {% load bootstrap %}
 
 {% block content %}
-<div>
-<h2 align="center">Recensione</h2>
-  <form method="post" novalidate>
-    {% csrf_token %}
-      {{ form|bootstrap }}
-    <button type="submit" class="btn btn-success">Save review</button>
-  </form>
-</div>
+
+
+<div class="container py-5">
+     <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Recensione</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form method="post" novalidate>
+                        <div >
+                            {% csrf_token %}
+                            {{ form|bootstrap }}
+                              <div class="form-group">
+                                  <label for="formControlRange">Sicurezza sul lavoro</label>
+                                  <input name="sicurezza" id="formControlRange" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="0"/>
+                                  <span id="formControlRangeValue">0</span>
+                              </div>
+
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success" >Save review</button>
+                        </div>
+                  </form>
+
+                </div>
+            </div>
+        </div>
+     </div>
+ </div>
+
+
+
+
 {% endblock %}
