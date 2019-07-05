@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
 {% if platforms_list %}
  <main role="main">
       <section class="jumbotron text-center">
@@ -28,7 +27,9 @@
                 <div class="card-body">
                     <a href="{% url 'recensione_platform' piattaforma.id %}"><h5 class="card-title">{{piattaforma.nome}}</h5></a>
                   <p class="card-text">{{piattaforma.categoria}}</p>
+                    {% if user.is_authenticated %}
                   <a href="{% url 'recensioni_new' piattaforma.id %}" class="btn btn-primary">Scrivi recensione</a>
+                    {% endif %}
               </div>
               </div>
             </div>
@@ -45,9 +46,7 @@
       </section>
   {% endif %}
  </main>
-{% else %}
-  <p>Non sei loggato</p>
-  <a href="{% url 'login' %}">login</a>
-{% endif %}
+
+
 {% endblock %}
 

@@ -13,7 +13,10 @@ class Recensioni(models.Model):
     data = models.DateTimeField('date published', auto_now=True)
     titolo = models.CharField(max_length=200)
     descrizione = models.CharField(max_length=2000)
-    sicurezza = models.IntegerField(default=0)
+    value1 = models.IntegerField(default=0)
+    value2 = models.IntegerField(default=0)
+    value3 = models.IntegerField(default=0)
+    value4 = models.IntegerField(default=0)
     platform = models.ForeignKey(Platform, on_delete=models.CASCADE)
 
     def __str__(self):

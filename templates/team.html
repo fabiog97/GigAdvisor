@@ -5,6 +5,7 @@
 <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
     <!-- Custom styles for this template -->
 {% endblock %}
 
@@ -24,77 +25,37 @@
         </div>
       </section>
   <!-- Grid row -->
-  <div class="row text-center">
 
-    <!-- Grid column -->
-    <div class="col-md-4 mb-md-0 mb-5">
-      <div class="avatar mx-auto">
-        <img src="/media/avatar.png" class="rounded z-depth-1-half" alt="Sample avatar">
-      </div>
-      <h4 class="font-weight-bold dark-grey-text my-4">Nicola Lettieri</h4>
-      <h6 class="text-uppercase grey-text mb-3"><strong>Photographer</strong></h6>
-      <!-- Facebook-->
-      <a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-        <i class="fa fa-facebook-f"></i>
-      </a>
-      <!--Dribbble -->
-      <a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-dribbble">
-        <i class="fa fa-dribbble"></i>
-      </a>
-      <!-- Twitter -->
-      <a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-        <i class="fa fa-twitter"></i>
-      </a>
-    </div>
-    <!-- Grid column -->
 
-    <!-- Grid column -->
-    <div class="col-md-4 mb-md-0 mb-5">
-      <div class="avatar mx-auto">
-        <img src="/media/avatar.png" class="rounded z-depth-1-half" alt="Sample avatar">
-      </div>
-      <h4 class="font-weight-bold dark-grey-text my-4">Alfonso Guarino</h4>
-      <h6 class="text-uppercase grey-text mb-3"><strong>Front-end Developer</strong></h6>
-      <!--Email-->
-      <a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-email">
-        <i class="fa fa-envelope"></i>
-      </a>
-      <!-- Facebook-->
-      <a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-        <i class="fa fa-facebook-f"></i>
-      </a>
-      <!-- GitHub-->
-      <a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-git">
-        <i class="fa fa-github"></i>
-      </a>
-    </div>
-    <!-- Grid column -->
 
-    <!-- Grid column -->
-    <div class="col-md-4">
-      <div class="avatar mx-auto">
-        <img src="/media/avatar.png" class="rounded z-depth-1-half" alt="Sample avatar">
-      </div>
-      <h4 class="font-weight-bold dark-grey-text my-4">Fabio Grauso</h4>
-      <h6 class="text-uppercase grey-text mb-3"><strong>Web Developer</strong></h6>
-      <!--Linkedin -->
-      <a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-li">
-        <i class="fab fa-linkedin-in "></i>
-      </a>
-      <!-- Twitter -->
-      <a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-        <i class="fab fa-twitter "></i>
-      </a>
-      <!--Pinterest -->
-      <a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-pin">
-        <i class="fab fa-pinterest "></i>
-      </a>
-    </div>
-    <!-- Grid column -->
+<main role="main">
+<div class="container marketing">
 
-  </div>
-  <!-- Grid row -->
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="/media/team/nicola.jpg" width="140" height="140">
+              <p></p>
+            <h3>Nicola Liettieri</h3>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
 
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="/media/team/fabio.png"  width="140" height="140">
+              <p></p>
+            <h3>Fabio Grauso</h3>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="/media/team/alfonso.jpg" width="140" height="140">
+              <p></p>
+            <h3>Alfonso Guarino</h3>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+          </div><!-- /.col-lg-4 -->
+        </div>
+</div></main>
 
 <!-- Section: Team v.2 -->
 {% endblock %}
