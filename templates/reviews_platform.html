@@ -32,6 +32,7 @@
                     <div class="card-body">
                         <div class="h5">{{platform.nome}}</div>
                         <div class="h7 text-muted">Categoria : {{platform.categoria}}</div>
+                        <div class="h6">Rating: {{platform.rating}}</div>
                     </div>
                     <ul class="list-group list-group-flush">
 
@@ -45,7 +46,7 @@
                             <div class="h5">{{avg_value2.value2__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
-                            <div class="h6 text-muted">Tempistività pagamenti</div>
+                            <div class="h6 text-muted">Tempestività pagamenti</div>
                             <div class="h5">{{avg_value3.value3__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
@@ -99,11 +100,6 @@
                 {% else %}
                    Nessuna recensione presente
                 {% endif %}
-
-
-
-
-
 
                 <!-- Post /////-->
 

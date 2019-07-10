@@ -5,6 +5,7 @@
 <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/scrolling-nav.css' %}" rel="stylesheet">
     <!-- Custom styles for this template -->
 
 {% endblock %}
@@ -13,11 +14,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'js/scrolling-nav.js' %}"></script>
 {% endblock %}
+
+
 
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
+
 
 
 <header>
@@ -43,7 +52,7 @@
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('/media/slider2(png).png')">
+      <div class="carousel-item" style="background-image: url('/media/slider1(png).png')">
         <div class="carousel-caption d-none d-md-block">
 
           <p class="lead">This is a description for the third slide.</p>
@@ -61,12 +70,79 @@
   </div>
 </header>
 
-<!-- Page Content -->
-<section class="py-5">
-  <div class="container">
-    <h1 class="display-4">Gig Advisor</h1>
-    <p class="lead">L'unica piattaforma ..... </p>
-  </div>
-</section>
+<section id="about" class="bg-secondary">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>About this page</h2>
+          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+          <ul>
+            <li>Clickable nav links that smooth scroll to page sections</li>
+            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
+            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
+            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="bg-warning">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Services we offer</h2>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="team-section text-center my-5">
+
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="/media/team/nicola.jpg" width="140" height="140">
+              <p></p>
+            <h3>Nicola Liettieri</h3>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. </p>
+          </div><!-- /.col-lg-4 -->
+
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="/media/team/nicola.jpg"  width="140" height="140">
+              <p></p>
+            <h3>Delfina Malandrino</h3>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+          </div><!-- /.col-lg4 -->
+
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="/media/team/nicola.jpg" width="140" height="140">
+              <p></p>
+            <h3>Rocco Zaccagnino</h3>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. </p>
+          </div><!-- /.col-lg-4 -->
+        </div>
+
+        <div class="row">
+
+          <div class="col">
+            <img class="rounded-circle" src="/media/team/alfonso.jpg" width="140" height="140">
+              <p></p>
+            <h3>Alfonso Guarino</h3>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          </div><!-- /.col-lg-4 -->
+
+          <div class="col">
+            <img class="rounded-circle" src="/media/team/fabio.png" width="140" height="140">
+              <p></p>
+            <h3>Fabio Grauso</h3>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          </div><!-- /.col-lg-4 -->
+        </div>
+    </div>
+  </section>
 
 {% endblock %}

@@ -1,11 +1,12 @@
 from django.db import models
+from decimal import Decimal
 
 class Platform(models.Model):
     nome = models.CharField(max_length=200)
     categoria = models.CharField(max_length=200)
     bestplatform = models.BooleanField(default=False)
     photo = models.ImageField(upload_to='platform')
-
+    rating = models.DecimalField(max_digits=3, decimal_places=2, default=Decimal('0.00'))
     def __str__(self):
         return self.nome
 
