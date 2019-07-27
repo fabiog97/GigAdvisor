@@ -53,6 +53,12 @@
                             <div class="h6 text-muted">Correttezza del datore di lavoro</div>
                             <div class="h5">{{avg_value4.value4__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
+                        <li class="list-group-item">
+                            <div class="h6 text-muted"><a href="{% url 'andamento' platform.id %}"><h6 class="card-title">Andamento nel tempo</h6></a></div>
+                        </li>
+
+
+                        
                     </ul>
                 </div>
             </div>
