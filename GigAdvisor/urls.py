@@ -6,7 +6,8 @@ from . import views
 
 urlpatterns = [
     path('signup/', views.SignUp.as_view(), name='signup'),
-    path('team/', views.team, name='team'),
+    path('profile/new_profile/', views.createProfile, name='new_profile'),
+    path('profile/', views.profiloView, name='profile'),
     path('charts/', views.charts, name='charts'),
     path('home/', views.home, name='home'),
     path('platforms/', views.PlatformListView.as_view(), name='platforms'),

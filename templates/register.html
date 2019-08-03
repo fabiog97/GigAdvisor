@@ -20,6 +20,8 @@
                 <div class="col-md-6 mx-auto">
                     <form class="form-signin" action="" method="post">
                         {% csrf_token %}
+                        {{ user_form.as_p }}
+                        {{ profile_form.as_p }}
                         <div class="form-group">
                             <label for="form.id_username" class="sr-only">Username</label>
                             <input type="text" id="form.id_username" class="form-control" name="{{ form.username.html_name}}" placeholder="Username" required autofocus>

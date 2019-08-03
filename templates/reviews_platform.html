@@ -27,31 +27,33 @@
             <div class="col-md-3">
                 <div class="card">
 					<div class="card-body" align="center">
-						<img class="rounded-circle" width="200" src="/media/{{platform.photo}}" alt="">
+						<img class="rounded-circle" width="80%" src="/media/{{platform.photo}}" alt="">
                     </div>
                     <div class="card-body">
                         <div class="h5">{{platform.nome}}</div>
-                        <div class="h7 text-muted">Categoria : {{platform.categoria}}</div>
-                        <div class="h6">Rating: {{platform.rating}}</div>
+                        <P></P>
+                        <div class="h6 text-muted">Categoria : {{platform.categoria}}</div>
+                        <p></p>
+                        <div class="h5 text-muted">Rating: {{platform.rating}}</div>
                     </div>
                     <ul class="list-group list-group-flush">
 
 
                         <li class="list-group-item">
                             <div class="h6 text-muted">Sicurezza sul lavoro</div>
-                            <div class="h5">{{avg_value1.value1__avg | default_if_none:"0" | floatformat:2}}</div>
+                            <div class="h5 text-success">{{avg_value1.value1__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
                             <div class="h6 text-muted">Trasparenza del contratto</div>
-                            <div class="h5">{{avg_value2.value2__avg | default_if_none:"0" | floatformat:2}}</div>
+                            <div class="h5 text-danger">{{avg_value2.value2__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
                             <div class="h6 text-muted">Tempestività pagamenti</div>
-                            <div class="h5">{{avg_value3.value3__avg | default_if_none:"0" | floatformat:2}}</div>
+                            <div class="h5 text-warning">{{avg_value3.value3__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
                             <div class="h6 text-muted">Correttezza del datore di lavoro</div>
-                            <div class="h5">{{avg_value4.value4__avg | default_if_none:"0" | floatformat:2}}</div>
+                            <div class="h5 text-info ">{{avg_value4.value4__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
                             <div class="h6 text-muted"><a href="{% url 'andamento' platform.id %}"><h6 class="card-title">Andamento nel tempo</h6></a></div>
@@ -114,5 +116,5 @@
 
         </div>
     </div>
-
+</div>
 {% endblock %}

@@ -16,9 +16,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-
-<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.zune.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.zune.js"></script>
 <!--
 <script  src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
 <script  src="{% static 'fusioncharts/fusioncharts.js' %}"></script>
@@ -74,7 +73,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="well"  id="sessions">
-              <h4>Sessions</h4>
+              <h4 class="font-weight-bold">Grafico di Rating</h4>
               <p><span id="chart-container">{{ output|safe }}</span></p>
             </div>
           </div>
@@ -83,13 +82,13 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="well">
-              <h4 >Sicurezza sul lavoro</h4>
+              <h4 class = "text-success font-weight-bold">Sicurezza sul lavoro</h4>
               <p><span id="chart1-container">{{ output1|safe }}</span></p>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="well">
-              <h4>Trasparenza del contratto</h4>
+              <h4 class = "text-danger font-weight-bold">Trasparenza del contratto</h4>
               <p><span id="chart2-container">{{ output2|safe }}</span></p>
             </div>
           </div>
@@ -97,26 +96,19 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="well">
-              <h4 >Tempestività dei pagamenti</h4>
+              <h4 class = "text-warning font-weight-bold">Tempestività dei pagamenti</h4>
               <p><span id="chart3-container">{{ output3|safe }}</span></p>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="well">
-              <h4>Correttezza del datore di lavoro</h4>
+              <h4 class = "text-info font-weight-bold">Correttezza del datore di lavoro</h4>
               <p><span id="chart4-container">{{ output4|safe }}</span></p>
             </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="well"  id="sessions">
-              <h4>Sessions</h4>
-              <p><span id="chart-1">{{ output5|safe }}</span></p>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </div>
   </div>

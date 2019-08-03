@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block styles %}
+<!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Gig Advisor{% endblock %}
+{% block content %}
+
+    <div class="jumbotron text-xs-center">
+      <h1 class="display-3">Thank You!</h1>
+      <p class="lead"><strong>Grazie per aver creato il tuo profilo</strong>
+      <hr>
+
+      <p class="lead">
+        <a class="btn btn-primary btn-sm" href="{% url 'platforms' %}" role="button">Go to platforms</a>
+      </p>
+    </div>
+{% endblock %}

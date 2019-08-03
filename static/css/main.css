@@ -100,7 +100,9 @@
              
              .well {
                background: #ffffff;
-               box-shadow: none
+               box-shadow: none;
+               padding-top: 3%;
+               text-align: center;
              }
              
              .form-inline .input-group {

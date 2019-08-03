@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block styles %}
+<!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">  
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-datetimepicker.css' %}">
+    <link href="{% static 'css/review.css' %}" rel="stylesheet" >
+
+    
+    
+{% endblock %}
+
+
+{% block scripts %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.maps.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/maps/fusioncharts.italy.js"></script>
+
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.zune.js"></script>
+<!--
+<script  src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+<script  src="{% static 'fusioncharts/fusioncharts.js' %}"></script>
+<script  src="{% static 'fusioncharts/themes/fusioncharts.zune.js' %}"></script>
+<script  src="{% static 'fusioncharts/fusioncharts.jqueryplugin.js' %}"></script>
+
+<script  src="{% static 'js/bootstrap.min.js' %}"></script>
+<script  src="{% static 'js/moment-with-locales.js' %}"></script>
+<script  src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
+-->
+
+{% endblock %}
+
+{% block title %}Gig Advisor{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    {% if user.profile.nome|length > 1 %}
+    <p></p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+        <div class="card" style="padding: 2%">
+                <div class="card-block">
+                    <div class="row">
+                    <div class="col-md-4 col-sm-4 text-center">
+                            <img src="/media/{{user.profile.avatar}}">
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <h2 class="card-title">Name: {{user.profile.nome}} {{user.profile.cognome}}</h2>
+                        <p class="card-text"><strong>Residenza: </strong> {{user.profile.residenza}} </p>
+                        <p class="card-text"><strong>Birth date: </strong> {{user.profile.birth_date}}</p>
+                        <p class="card-text"><strong>Titolo di studio: </strong> {{user.profile.titolo_di_studio}} </p>
+                        <p><strong>Platform: </strong>
+                            <span class="badge bg-primary">WordPress</span> 
+                            <span class="badge bg-info">Weebly</span>
+                            <span class="badge bg-warning">Bootstrap</span>
+                            <span class="badge bg-success">Wix</span>
+                        </p>
+                    </div> 
+                    <div class="col-md-4 col-sm-4 text-center">
+                            <a href="{% url 'new_profile'%}" class="btn btn-secondary btn-lg">Modifica profilo</a>
+                        </div>         
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <h2><strong> 5.2K </strong></h2>                    
+                        <p><small>Fans</small></p>
+                        <button class="btn btn-primary btn-block btn-md"><span class="fa fa-facebook-square"></span> Like  </button>
+                    </div>
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <h2><strong>1.4K</strong></h2>                    
+                        <p><small>Following</small></p>
+                        <button class="btn btn-success btn-block btn-md"><span class="fa fa-twitter-square"></span> Tweet </button>
+                    </div>
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <h2><strong>3.8K</strong></h2>                    
+                        <p><small>Followers</small></p>
+                        <button type="button" class="btn btn-danger btn-block btn-md"><span class="fa fa-google-plus-square"></span> Follow </button>  
+                    </div>
+                    </div>
+                    </div>
+                </div>
+        </div>
+        </div> 
+    </div>
+    
+    
+    
+    {% else %}
+    <p></p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+        <div class="card" style="padding: 2%">
+                <div class="card-block">
+                    <div class="row">
+                    
+                    <div class="col-md-12 col-sm-12 text-center">
+                        <h3><strong>Inseirire Logo Gig Advisor community</strong></h3>                    
+                        <p><small>Ancora non sei entrato a far parte della community di Gig Advisor ?</small></p>
+                        <a href="{% url 'new_profile' %}" class="btn btn-primary">Crea nuovo profilo</a>
+                    
+                    </div>
+                    </div>
+                </div>
+        </div>
+        </div> 
+    </div>
+    {% endif %}
+
+{% else %}
+<div class="container py-5">
+    <div class="row">
+       <div class="col-md-12">
+           <h2 class="text-center mb-4">Non sei autenticato</h2>
+           <p class="text-center mb-4">Pre creare un nuovo profilo registrati su Gig Advisor</p>
+       </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

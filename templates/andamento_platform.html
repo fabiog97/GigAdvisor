@@ -6,7 +6,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">    
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">  
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-datetimepicker.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}">
+    <link href="{% static 'css/review.css' %}" rel="stylesheet" >
+
+    
+    
 {% endblock %}
 
 
@@ -15,10 +18,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.maps.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/maps/fusioncharts.italy.js"></script>
 
-
-<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.zune.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.zune.js"></script>
 <!--
 <script  src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
 <script  src="{% static 'fusioncharts/fusioncharts.js' %}"></script>
@@ -37,28 +42,76 @@
 {% block content %}
 
 
-<body>
-  <div class="container-fluid">
-    <div class="row content">
-      
-      <br>
+<div class="container-fluid gedf-wrapper">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+      <div class="card-body" align="center">
+        <img class="rounded-circle" width="80%" src="/media/{{platform.photo}}" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="h5">{{platform.nome}}</div>
+                    <P></P>
+                    <div class="h6 text-muted">Categoria : {{platform.categoria}}</div>
+                    <p></p>
+                    <div class="h5 text-muted">Rating: {{platform.rating}}</div>
+                </div>
+                <ul class="list-group list-group-flush">
 
-      <div class="col-sm-12 col-md-12 col-lg-12" id="contemt-main">
-      
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="well"  id="sessions">
-              <h4>Sessions</h4>
-              <p><span id="chart-1">{{ output5|safe }}</span></p>
+
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">Sicurezza sul lavoro</div>
+                        <div class="h5 text-success">{{avg_value1.value1__avg | default_if_none:"0" | floatformat:2}}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">Trasparenza del contratto</div>
+                        <div class="h5 text-danger">{{avg_value2.value2__avg | default_if_none:"0" | floatformat:2}}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">Tempestività pagamenti</div>
+                        <div class="h5 text-warning">{{avg_value3.value3__avg | default_if_none:"0" | floatformat:2}}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">Correttezza del datore di lavoro</div>
+                        <div class="h5 text-info ">{{avg_value4.value4__avg | default_if_none:"0" | floatformat:2}}</div>
+                    </li>
+                    
+
+                    
+                </ul>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="col-md-9 gedf-main">
+            <div class="container-fluid">
+                <div class="row content">
+                  <div class="col-sm-12 col-md-12 col-lg-12" id="contemt-main">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="well"  id="sessions">
+                          <p><span id="chart-1">{{ output5|safe }}</span></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="well"  id="sessions">
+                          <p><span id="myFirstmap-container">{{ output6|safe }}</span></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
     </div>
-  </div>
+</div>
+</div>
+
+
+  
 
  
-</body>
+
 
 
 {% endblock %}

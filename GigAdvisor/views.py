@@ -1,5 +1,6 @@
 from django.db.models import Avg
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views import generic
 from static.fusioncharts import FusionCharts
@@ -8,33 +9,52 @@ from static.fusioncharts import TimeSeries
 from collections import OrderedDict
 from django.shortcuts import render
 from GigAdvisor.forms import ReviewForm
+from GigAdvisor.forms import ProfileForm
 from .models import *
+from datetime import datetime
 from django.core import serializers
+from django.shortcuts import render
+from django.http import HttpResponse
+from collections import OrderedDict
+from decimal import Decimal
 import simplejson
 import requests
-
-
 import json
+import pytz
+
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'register.html'
 
-def team(request):
-    context = {'team_page': "active"}  # new info here
-    return render(request, 'team.html', context)
-from django.shortcuts import render
-from django.http import HttpResponse
-from collections import OrderedDict
+
+def profiloView(request):
+    context = {'profile_page': "active"}  # new info here
+    return render(request, 'profile.html',context)
 
 
+def createProfile(request):
+    if request.method == 'POST':
+        if(request.user.is_authenticated):
+            profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+            if profile_form.is_valid():
+                
+                profile_form.save()
+                return render(request, 'success_newprofile.html')
+            else:
+                return render(request, 'unsuccess_review.html')
+    else:
+        profile_form = ProfileForm(request.POST)
+        return render(request, 'profile_form.html', {'form': profile_form})
+
+    
 
 def charts(request):
 
     dataSource = {}
     dataSource['chart'] = {
-        "caption": "Grafico di Rating",
+        "caption": "",
             "xAxisName": "Platforms",
             "yAxisName": "Values",
             "numberPrefix": "",
@@ -53,7 +73,7 @@ def charts(request):
 
     dataSource1 = {}
     dataSource1['chart'] = {
-        "caption": "Sicurezza sul lavoro",
+        "caption": "",
             "xAxisName": "Platforms",
             "yAxisName": "Values",
             "numberPrefix": "",
@@ -67,7 +87,10 @@ def charts(request):
         avg_value1 = Recensioni.objects.filter(platform__id=plat.id).aggregate(Avg('value1')).get('value1__avg')
         
         data['label'] = plat.nome
-        data['value'] = int(avg_value1)
+        if(avg_value1  is None):
+             data['value'] = 0
+        else:
+            data['value'] = int(avg_value1)
         dataSource1['data'].append(data)
         avg_value1 = 0
         
@@ -76,7 +99,7 @@ def charts(request):
 
     dataSource2 = {}
     dataSource2['chart'] = {
-        "caption": "Trasparenza del contratto",
+        "caption": "",
             "xAxisName": "Platforms",
             "yAxisName": "Values",
             "numberPrefix": "",
@@ -89,12 +112,15 @@ def charts(request):
         data = {}
         avg_value2 = Recensioni.objects.filter(platform__id=plat.id).aggregate(Avg('value2')).get('value2__avg')
         data['label'] = plat.nome
-        data['value'] = int(avg_value2)
+        if(avg_value2 is None):
+             data['value'] = 0
+        else:
+            data['value'] = int(avg_value2)
         dataSource2['data'].append(data)
 
     dataSource3 = {}
     dataSource3['chart'] = {
-        "caption": "Tempestività pagamenti",
+        "caption": "",
             "xAxisName": "Platforms",
             "yAxisName": "Values",
             "numberPrefix": "",
@@ -107,12 +133,15 @@ def charts(request):
         data = {}
         avg_value3 = Recensioni.objects.filter(platform__id=plat.id).aggregate(Avg('value3')).get('value3__avg')
         data['label'] = plat.nome
-        data['value'] = int(avg_value3)
+        if(avg_value3 is None):
+             data['value'] = 0
+        else:
+            data['value'] = int(avg_value3)
         dataSource3['data'].append(data)
 
     dataSource4 = {}
     dataSource4['chart'] = {
-        "caption": "Correttezza del datore di lavoro",
+        "caption": "",
             "xAxisName": "Platforms",
             "yAxisName": "Values",
             "numberPrefix": "",
@@ -125,8 +154,13 @@ def charts(request):
         data = {}
         avg_value4 = Recensioni.objects.filter(platform__id=plat.id).aggregate(Avg('value4')).get('value4__avg')
         data['label'] = plat.nome
-        data['value'] = int(avg_value4)
+        if(avg_value4 is None):
+             data['value'] = 0
+        else:
+            data['value'] = int(avg_value4)
         dataSource4['data'].append(data)
+
+
 
     column2D = FusionCharts("column2d", "myFirstChart", "100%", "400", "chart-container", "json", dataSource)
 
@@ -135,7 +169,7 @@ def charts(request):
     graph3 = FusionCharts("column2d", "myFirstChart3", "100%", "300", "chart3-container", "json", dataSource3)
     graph4 = FusionCharts("column2d", "myFirstChart4", "100%", "300", "chart4-container", "json", dataSource4)
         
-    return render(request, 'charts.html', {'output': column2D.render(), 'output1': graph1.render(), 'output2': graph2.render(), 'output3': graph3.render(), 'output4': graph4.render()})
+    return render(request, 'charts.html', {'output': column2D.render(), 'output1': graph1.render(), 'output2': graph2.render(), 'output3': graph3.render(), 'output4': graph4.render(), 'charts_page': "active"})
 
 def home(request):
     context = {'home_page': "active"}  # new info here
@@ -166,12 +200,21 @@ def recensione_new(request, id):
             range2 = int(request.POST['range2'])
             range3 = int(request.POST['range3'])
             range4 = int(request.POST['range4'])
-            rating = (range1+range2+range3+range4)/4
+            luogo = request.POST['luogo']
+            
+            
             platform = Platform.objects.get(id=id)
-            platform.rating = rating
-            platform.save()
-            r = Recensioni(titolo=titolo, descrizione=descrizione,platform=platform, value1=range1, value2=range2, value3=range3, value4=range4)
+
+            r = Recensioni(titolo=titolo, descrizione=descrizione,platform=platform, value1=range1, value2=range2, value3=range3, value4=range4, luogo = luogo)
             r.save()
+            value1_avg = Recensioni.objects.filter(platform__id=id).aggregate(Avg('value1')).get('value1__avg')
+            value2_avg = Recensioni.objects.filter(platform__id=id).aggregate(Avg('value2')).get('value2__avg')
+            value3_avg = Recensioni.objects.filter(platform__id=id).aggregate(Avg('value3')).get('value3__avg')
+            value4_avg = Recensioni.objects.filter(platform__id=id).aggregate(Avg('value4')).get('value4__avg')
+
+            platform.rating = (value1_avg + value2_avg + value3_avg + value4_avg)/4
+            platform.save()
+            
 
             return render(request, 'success_review.html')
         else:
@@ -186,6 +229,14 @@ def success(request):
 
 
 def andamento_platform (request, id):
+
+    platform = Platform.objects.get(id=id)
+    
+    recensioni = Recensioni.objects.filter(platform__id=platform.id).values()
+    avg_value1 = Recensioni.objects.filter(platform__id=platform.id).aggregate(Avg('value1'))
+    avg_value2 = Recensioni.objects.filter(platform__id=platform.id).aggregate(Avg('value2'))
+    avg_value3 = Recensioni.objects.filter(platform__id=platform.id).aggregate(Avg('value3'))
+    avg_value4 = Recensioni.objects.filter(platform__id=platform.id).aggregate(Avg('value4'))
 
     schema_chart = [{
         "name": "Time",
@@ -204,8 +255,7 @@ def andamento_platform (request, id):
     y = json.loads(data)
     
     final_data = []
-    from datetime import datetime
-    import pytz
+    
     
     for i in range(len(y)):
         z = y[i]
@@ -224,18 +274,117 @@ def andamento_platform (request, id):
     
     timeSeries = TimeSeries(fusionTable)
 
-    timeSeries.AddAttribute('chart', '{}')
+    timeSeries.AddAttribute('chart', '{"paletteColors": "#28a745,#dc3545,#ffc107,#17a2b8"}')
     timeSeries.AddAttribute('caption', '{"text":"Sales Analysis"}')
     timeSeries.AddAttribute('subcaption', '{"text":"Grocery & Footwear"}')
     timeSeries.AddAttribute('series', '"Type"')
     timeSeries.AddAttribute('yaxis', '[{"plot":"Sales Value","title":"Sale Value","format":{"prefix":""}}]')
     
+        # Chart data is passed to the `dataSource` parameter, as dict, in the form of key - value pairs.
+    dataSource5 = OrderedDict()
 
-    # Create an object for the chart using the FusionCharts class constructor
-    fcChart = FusionCharts("timeseries", "ex1", 700, 450, "chart-1", "json", timeSeries)
+    # The `mapConfig` dict contains key - value pairs data
+    # for chart attribute
+    mapConfig = OrderedDict()
+    mapConfig["animation"] = "0"
+    mapConfig["usehovercolor"] = "1"
+    mapConfig["showlegend"] = "1"
+    mapConfig["legendposition"] = "BOTTOM"
+    mapConfig["legendborderalpha"] = "0"
+    mapConfig["legendbordercolor"] = "#ffffff"
+    mapConfig["legendallowdrag"] = "0"
+    mapConfig["legendshadow"] = "0"
+    mapConfig["caption"] = "Website Visits for the month of March 2018"
+    mapConfig["connectorcolor"]= "000000"
+    mapConfig["fillalpha"]= "80"
+    mapConfig["hovercolor"]= "CCCCCC"
+    mapConfig["theme"] = "zune"
 
+    # Map color range data
+    colorDataObj = {
+        "minvalue": "0",
+        "code": "#FFE0B2",
+        "gradient": "1",
+        "color": [{
+            "minValue": "0.0",
+            "maxValue": "1.0",
+            "code": "#FFD74D"
+        }, {
+            "minValue": "1.0",
+            "maxValue": "2.0",
+            "code": "#FB8C00"
+        }, {
+            "minValue": "2.0",
+            "maxValue": "3.0",
+            "code": "#E65100"
+        },{
+            "minValue": "3.0",
+            "maxValue": "4.0",
+            "code": "#e03400"
+        },{
+            "minValue": "4.0",
+            "maxValue": "5.0",
+            "code": "#e00400"
+        }]
+    }
+
+  
+
+    dataSource5["chart"] = mapConfig
+    dataSource5["colorrange"] = colorDataObj
+    dataSource5["data"] = []
     
-    return render(request, 'andamento_platform.html', {'output5': fcChart.render()})
+    
+    avg = 0
+    for r in Recensioni.objects.filter(platform__id=id):
+        
+        print("test")
+        avg__luogo_value1 = Recensioni.objects.filter(platform__id=id, luogo = r.luogo).aggregate(Avg('value1')).get('value1__avg')
+        avg__luogo_value2 = Recensioni.objects.filter(platform__id=id, luogo = r.luogo).aggregate(Avg('value2')).get('value2__avg')
+        avg__luogo_value3 = Recensioni.objects.filter(platform__id=id, luogo = r.luogo).aggregate(Avg('value3')).get('value3__avg')
+        avg__luogo_value4 = Recensioni.objects.filter(platform__id=id, luogo = r.luogo).aggregate(Avg('value4')).get('value4__avg')
+        avg = (avg__luogo_value1+avg__luogo_value2+avg__luogo_value3+avg__luogo_value4)/4
+        
+        print("Luogo RATING: " +r.luogo +" Value Rating: " +str(avg))
+        
+        dataSource5["data"].append({
+            "id": r.luogo,
+            "value": str(avg),
+            "showLabel": 1
+        })
+    
+
+
+    # Iterate through the data in `mapDataArray` and insert in to the `dataSource["data"]` list.
+    #The data for the `data` should be in an array wherein each element
+    #of the array is a JSON object# having the `id`, `value` and `showlabel` as keys.
+    #for i in range(len(mapDataArray)):
+    #    dataSource5["data"].append({
+    #        "id": mapDataArray[i][0],
+    #       "value": mapDataArray[i][1],
+    #       "showLabel": mapDataArray[i][2]
+    #    })
+
+    # Create an object for the world map using the FusionCharts class constructor
+    # The chart data is passed to the `dataSource` parameter.
+    fusionMap = FusionCharts("maps/italy", "myFirstMap", "100%", "450", "myFirstmap-container", "json", dataSource5)
+
+
+    fcChart = FusionCharts("timeseries", "ex1", "100%", "350", "chart-1", "json", timeSeries)
+
+    context = {
+        'platform': platform,
+        'recensioni': recensioni,
+        'avg_value1': avg_value1,
+        'avg_value2': avg_value2,
+        'avg_value3': avg_value3,
+        'avg_value4': avg_value4,
+        'output5': fcChart.render(),
+        'output6': fusionMap.render()
+    }
+   
+
+    return render(request, 'andamento_platform.html', context)
 
 
 def recensione_platform (request, id):
