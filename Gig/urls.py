@@ -26,5 +26,6 @@ urlpatterns = [
     path('GigAdvisor/', include('django.contrib.auth.urls')), # new
     path('GigAdvisor/', TemplateView.as_view(template_name='home.html'), name='home_page'),
     path('', TemplateView.as_view(template_name='home.html'), name='home_page'),
+    path('accounts/login/', include('spirit.urls') ), # new
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -50,7 +50,16 @@
           <div class="features-icons-icon d-flex">
             <i class="icon-screen-desktop m-auto text-primary"></i>
           </div>
-          <h3>Rate your Gig</h3>
+          {% if user.is_authenticated %}
+            <a href="{% url 'platforms' %}">
+              <h3>Rate your Gig</h3>
+            </a>
+          {% else %}
+            <a href="{% url 'login' %}">
+                <h3>Rate your Gig</h3>
+                
+            </a>
+          {% endif %}
           <p class="lead mb-0">Review the platforms anonymously</p>
         </div>
       </div>
@@ -59,7 +68,9 @@
           <div class="features-icons-icon d-flex">
             <i class="icon-layers m-auto text-primary"></i>
           </div>
-          <h3>Connect with others</h3>
+          <a href="{% url 'spirit:index' %}">
+            <h3>Connect with others</h3>
+          </a>
           <p class="lead mb-0">Compare yourself in the forum and discuss with others</p>
         </div>
       </div>

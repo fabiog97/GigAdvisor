@@ -1,5 +1,5 @@
 # accounts/urls.py
-from django.urls import path
+from django.urls import path,include
 from django.views.generic.base import TemplateView # new
 from . import views
 
@@ -15,4 +15,6 @@ urlpatterns = [
     path('platforms/new_review/<int:id>/', views.recensione_new, name='recensioni_new'),
     path('platforms/reviews/<int:id>/', views.recensione_platform, name='recensione_platform'),
     path('platforms/reviews/andamento/<int:id>/', views.andamento_platform, name='andamento'),
+    path('forum/', include('spirit.urls'),name='forum'), # new
+    
 ]

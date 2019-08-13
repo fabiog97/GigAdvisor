@@ -38,8 +38,9 @@ def createProfile(request):
     if request.method == 'POST':
         if(request.user.is_authenticated):
             profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
             if profile_form.is_valid():
-                
+                print(request)
                 profile_form.save()
                 return render(request, 'success_newprofile.html')
             else:
