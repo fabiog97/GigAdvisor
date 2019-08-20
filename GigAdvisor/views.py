@@ -35,12 +35,14 @@ def profiloView(request):
 
 
 def createProfile(request):
+
     if request.method == 'POST':
         if(request.user.is_authenticated):
             profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
-
+            #form_nome = profile_form.nome
+            
             if profile_form.is_valid():
-                print(request)
+                profile_form.modified = False
                 profile_form.save()
                 return render(request, 'success_newprofile.html')
             else:
@@ -49,6 +51,28 @@ def createProfile(request):
         profile_form = ProfileForm(request.POST)
         return render(request, 'profile_form.html', {'form': profile_form})
 
+
+def updateProfile(request):
+    context = {'profile_page': "active"}  # new info here
+    if request.method == 'POST':
+        if(request.user.is_authenticated):
+            profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+            if profile_form.is_valid():
+                
+                profile_form.save()
+                return render(request, 'profile.html', context)
+            else:
+                return render(request, 'unsuccess_review.html')
+    else:
+        
+        p = Profile.objects.filter(user=request.user)[:1].get()
+        
+        
+        
+        profile_form = ProfileForm(initial={'avatar': p.avatar,'nome':  p.nome, 'cognome':  p.cognome, 'residenza': p.residenza, 'titolo_di_studio': p.titolo_di_studio, 'sesso': p.sesso, 'birth_date':p.birth_date})
+        profile_form.modified = True
+        return render(request, 'profile_form.html', {'form': profile_form})
     
 
 def charts(request):

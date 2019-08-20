@@ -33,6 +33,7 @@ YEARS= [x for x in range(1940,2021)]
 class ProfileForm(forms.ModelForm):
     sesso = forms.ChoiceField(required=True, choices=CHOICES)
     birth_date= forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
+    modified = False
     class Meta:
         model = Profile
         fields = ('nome', 'cognome', 'residenza','sesso', 'birth_date', 'titolo_di_studio','avatar')
