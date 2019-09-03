@@ -31,6 +31,7 @@ class SignUp(generic.CreateView):
 
 def profiloView(request):
     context = {'profile_page': "active"}  # new info here
+    #recensioni = Recensioni.objects.filter(platform__id=platform.id).values()
     return render(request, 'profile.html',context)
 
 
@@ -84,7 +85,16 @@ def charts(request):
             "yAxisName": "Values",
             "numberPrefix": "",
             "theme": "zune",
-           
+            "baseFontSize": "14",
+            "xAxisNamePadding": "30",
+            "yAxisNamePadding": "30",
+            "chartLeftMargin": "70",
+            "chartTopMargin": "70",
+            "chartRightMargin": "70",
+            "chartBottomMargin": "70",
+             "usePlotGradientColor": "1",
+        "usePlotGradientColor": "1",
+        "plotGradientColor":"#ffffff"
         }
     dataSource['data'] = []
 
@@ -103,7 +113,14 @@ def charts(request):
             "yAxisName": "Values",
             "numberPrefix": "",
             "theme": "zune",
-            "paletteColors": "#0075c2,#1aaf5d,#f2c500",
+            "paletteColors": "5d62b5,29c3be,f2726f",
+            "baseFontSize": "12",
+            "chartLeftMargin": "30",
+            "chartTopMargin": "50",
+            "chartRightMargin": "30",
+            "chartBottomMargin": "50",
+            "xAxisNamePadding": "30",
+            "yAxisNamePadding": "30",
         }
     dataSource1['data'] = []
 
@@ -129,7 +146,14 @@ def charts(request):
             "yAxisName": "Values",
             "numberPrefix": "",
             "theme": "zune",
-            "paletteColors": "#0075c2,#1aaf5d,#f2c500",
+            "paletteColors": "5d62b5,29c3be,f2726f",
+            "baseFontSize": "12",
+            "chartLeftMargin": "30",
+            "chartTopMargin": "50",
+            "chartRightMargin": "30",
+            "chartBottomMargin": "50",
+            "xAxisNamePadding": "30",
+            "yAxisNamePadding": "30",
         }
     dataSource2['data'] = []
 
@@ -150,7 +174,14 @@ def charts(request):
             "yAxisName": "Values",
             "numberPrefix": "",
             "theme": "zune",
-            "paletteColors": "#0075c2,#1aaf5d,#f2c500",
+            "paletteColors": "5d62b5,29c3be,f2726f",
+            "baseFontSize": "12",
+            "chartLeftMargin": "30",
+            "chartTopMargin": "50",
+            "chartRightMargin": "30",
+            "chartBottomMargin": "50",
+            "xAxisNamePadding": "30",
+            "yAxisNamePadding": "30",
         }
     dataSource3['data'] = []
 
@@ -171,7 +202,14 @@ def charts(request):
             "yAxisName": "Values",
             "numberPrefix": "",
             "theme": "zune",
-            "paletteColors": "#0075c2,#1aaf5d,#f2c500",
+            "paletteColors": "5d62b5,29c3be,f2726f",
+            "baseFontSize": "12",
+            "chartLeftMargin": "30",
+            "chartTopMargin": "50",
+            "chartRightMargin": "30",
+            "chartBottomMargin": "50",
+            "xAxisNamePadding": "30",
+            "yAxisNamePadding": "30",
         }
     dataSource4['data'] = []
 
