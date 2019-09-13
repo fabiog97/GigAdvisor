@@ -338,10 +338,11 @@ def andamento_platform (request, id):
     timeSeries = TimeSeries(fusionTable)
 
     timeSeries.AddAttribute('chart', '{"paletteColors": "#28a745,#dc3545,#ffc107,#17a2b8"}')
-    timeSeries.AddAttribute('caption', '{"text":"Sales Analysis"}')
-    timeSeries.AddAttribute('subcaption', '{"text":"Grocery & Footwear"}')
+    timeSeries.AddAttribute('chart', '{"captionPadding": "80"}')
+    timeSeries.AddAttribute('caption', '{"text":"Andamento nel tempo"}')
+    timeSeries.AddAttribute('subcaption', '{"text":""}')
     timeSeries.AddAttribute('series', '"Type"')
-    timeSeries.AddAttribute('yaxis', '[{"plot":"Sales Value","title":"Sale Value","format":{"prefix":""}}]')
+    timeSeries.AddAttribute('yaxis', '[{"plot":"Rating Value","title":"Sale Value","format":{"prefix":""}}]')
     
         # Chart data is passed to the `dataSource` parameter, as dict, in the form of key - value pairs.
     dataSource5 = OrderedDict()
@@ -430,10 +431,10 @@ def andamento_platform (request, id):
 
     # Create an object for the world map using the FusionCharts class constructor
     # The chart data is passed to the `dataSource` parameter.
-    fusionMap = FusionCharts("maps/italy", "myFirstMap", "100%", "450", "myFirstmap-container", "json", dataSource5)
+    fusionMap = FusionCharts("maps/italy", "myFirstMap", "100%", "500", "myFirstmap-container", "json", dataSource5)
 
 
-    fcChart = FusionCharts("timeseries", "ex1", "100%", "350", "chart-1", "json", timeSeries)
+    fcChart = FusionCharts("timeseries", "ex1", "100%", "600", "chart-1", "json", timeSeries)
 
     context = {
         'platform': platform,

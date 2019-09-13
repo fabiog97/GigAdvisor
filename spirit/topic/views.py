@@ -110,6 +110,7 @@ def detail(request, pk, slug):
 
 
 def index_active(request):
+    print("TEST")
     categories = (
         Category.objects
         .visible()

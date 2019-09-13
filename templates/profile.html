@@ -58,16 +58,20 @@
                         <p class="card-text"><strong>Residenza: </strong> {{user.profile.residenza}} </p>
                         <p class="card-text"><strong>Birth date: </strong> {{user.profile.birth_date}}</p>
                         <p class="card-text"><strong>Titolo di studio: </strong> {{user.profile.titolo_di_studio}} </p>
+                        <!--
                         <p><strong>Platform: </strong>
                             <span class="badge bg-primary">WordPress</span> 
                             <span class="badge bg-info">Weebly</span>
                             <span class="badge bg-warning">Bootstrap</span>
                             <span class="badge bg-success">Wix</span>
                         </p>
+                        -->
                     </div> 
                     <div class="col-md-4 col-sm-4 text-center">
                             <a href="{% url 'update_profile'%}" class="btn btn-secondary btn-lg">Modifica profilo</a>
-                        </div>         
+                        </div>   
+                        
+                    <!--
                     <div class="col-md-4 col-sm-4 text-center">
                         <h2><strong> 5.2K </strong></h2>                    
                         <p><small>Fans</small></p>
@@ -84,7 +88,9 @@
                         <button type="button" class="btn btn-danger btn-block btn-md"><span class="fa fa-google-plus-square"></span> Follow </button>  
                     </div>
                     </div>
+                    -->
                     </div>
+                    
                 </div>
         </div>
         </div> 
@@ -102,8 +108,8 @@
                     <div class="row">
                     
                     <div class="col-md-12 col-sm-12 text-center">
-                        <h3><strong>Inseirire Logo Gig Advisor community</strong></h3>                    
-                        <p><small>Ancora non sei entrato a far parte della community di Gig Advisor ?</small></p>
+                        <h3><strong>Cosa stai aspettando?</strong></h3>                    
+                        <p><small>Crea anche tu il tuo profilo da lavoratore</small></p>
                         <a href="{% url 'new_profile' %}" class="btn btn-primary">Crea nuovo profilo</a>
                     
                     </div>

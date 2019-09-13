@@ -19,7 +19,8 @@ User = get_user_model()
 @administrator_required
 def index(request):
     categories = Category.objects.filter(parent=None, is_private=False)
-    context = {'categories': categories, }
+    context = {'categories': categories, 'forum_page': "active" }
+    
     return render(request, 'spirit/category/admin/index.html', context)
 
 

@@ -28,24 +28,40 @@
 <body>
 <style>
 .navbar-nav > .active > a {
-  font-weight: bold
+  color: #00aac9;
 }
-.nav-item > a:hover {
-  color: aqua;
+
+.navbar li a {
+    color: white;
+}
+
+.navbar li a:hover{
+    color: #00aac9;
+}
+
+.navbar{
+  background-color:#181818;
+  
+
+}
+.btn, .btn:hover, .btn:active, .btn:visited {
+    background-color: #00aac9;
+    border-color: #ffffff;
+    color: white;
 }
 </style>
-
         {% block nav %}
-
-        
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar fixed-top navbar-expand-lg navbar">
+          {% if request.path == '/GigAdvisor/home/' %}
+          {% else %}
           <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="/media/GigAdvisor" width="100" height="100" class="d-inline-block align-top" alt=""></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <img src="/media/GigAdvisor2-versione1.png" width="150"  class="d-inline-block align-top" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+          {% endif %}
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
               <li class="nav-item {{ home_page }}">
                 <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only"></span></a>
               </li>
@@ -58,16 +74,18 @@
               <li class="nav-item {{ profile_page }}">
                 <a class="nav-link" href="{% url 'profile' %}">Profile</a>
               </li>
-              
+              <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'spirit:index' %}">Forum</a>
+                </li>
             </ul>
           </div>
           <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-secondary">Logout</button></a>
+                    <a href="{% url 'logout' %}"><button type="button" class="btn btn-light">Logout</button></a>
                     {% else %}
-                    <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-secondary">Login</button></a>
+                    <a href="{% url 'login' %}"><button type="button" class="btn btn-light">Login</button></a>
                     {% endif %}
                   </li>
             </ul>

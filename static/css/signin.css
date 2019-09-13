@@ -1,4 +1,7 @@
 
+body{
+  padding-top: 75px;
+}
 
 .form-signin {
   width: 100%;

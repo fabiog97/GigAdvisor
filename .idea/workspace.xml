@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff3cdb10-6bec-4f8b-a520-dd83f3136a9d" name="Default Changelist" comment="" />
+    <list default="true" id="ff3cdb10-6bec-4f8b-a520-dd83f3136a9d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/media/GigAdvisor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/GigAdvisor3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Slider1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Slider1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spirit/category/admin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/spirit/category/admin/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spirit/core/templates/spirit/_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/spirit/core/templates/spirit/_header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spirit/topic/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/spirit/topic/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/charts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-615">
-              <caret line="44" column="67" selection-start-line="44" selection-start-column="67" selection-end-line="44" selection-end-column="67" />
+            <state relative-caret-position="15">
+              <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -111,7 +121,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="739" />
@@ -122,6 +132,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,34 +143,23 @@
             <path>
               <item name="Gig" type="b2602c69:ProjectViewProjectNode" />
               <item name="Gig" type="462c0819:PsiDirectoryNode" />
-              <item name="spirit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Gig" type="462c0819:PsiDirectoryNode" />
-              <item name="spirit" type="462c0819:PsiDirectoryNode" />
-              <item name="category" type="462c0819:PsiDirectoryNode" />
+              <item name="GigAdvisor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Gig" type="b2602c69:ProjectViewProjectNode" />
               <item name="Gig" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Gig" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Gig" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -287,7 +287,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="739" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="739" extended-state="6" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24622716" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -621,8 +621,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/charts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-615">
-          <caret line="44" column="67" selection-start-line="44" selection-start-column="67" selection-end-line="44" selection-end-column="67" />
+        <state relative-caret-position="15">
+          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
         </state>
       </provider>
     </entry>
