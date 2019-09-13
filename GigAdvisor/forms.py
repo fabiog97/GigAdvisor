@@ -23,10 +23,15 @@ class ReviewForm(forms.ModelForm):
             'titolo': Textarea(attrs={'cols': 60, 'rows': 1}),
             'descrizione': Textarea(attrs={'cols': 60, 'rows': 8}),
         }
+        labels = {
+            'titolo': ('Title'),
+            'descrizione': ('Description'),
+
+        }
 
 CHOICES = [
-    ('M', 'Maschile'),
-    ('F', 'Femminile'),
+    ('M', 'Male'),
+    ('F', 'Female'),
 ]
 YEARS= [x for x in range(1940,2021)]
 
@@ -44,5 +49,11 @@ class ProfileForm(forms.ModelForm):
             'nome': ('Name'),
             'cognome': ('Surname'),
             'avatar': ('Photo'),
+            'residenza': ('Residency'),
+            'sesso': ('Sex'),
+            'birth_date': ('Birth Date'),
+            'titolo_di_studio': ('Qualification'),
+
+            
 
         }

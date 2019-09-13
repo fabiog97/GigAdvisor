@@ -15,13 +15,6 @@
 {% block title %}Platform Reviews{% endblock %}
 
 {% block content %}
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Review Platform</h1>
-        </div>
-      </section>
-
-
 <div class="container-fluid gedf-wrapper">
         <div class="row">
             <div class="col-md-3">
@@ -32,31 +25,29 @@
                     <div class="card-body">
                         <div class="h5">{{platform.nome}}</div>
                         <P></P>
-                        <div class="h6 text-muted">Categoria : {{platform.categoria}}</div>
+                        <div class="h6 text-muted">Category: {{platform.categoria}}</div>
                         <p></p>
                         <div class="h5 text-muted">Rating: {{platform.rating}}</div>
                     </div>
                     <ul class="list-group list-group-flush">
-
-
                         <li class="list-group-item">
-                            <div class="h6 text-muted">Sicurezza sul lavoro</div>
+                            <div class="h6 text-muted">Safety at work</div>
                             <div class="h5 text-success">{{avg_value1.value1__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
-                            <div class="h6 text-muted">Trasparenza del contratto</div>
+                            <div class="h6 text-muted">Contracts transparency</div>
                             <div class="h5 text-danger">{{avg_value2.value2__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
-                            <div class="h6 text-muted">Tempestività pagamenti</div>
+                            <div class="h6 text-muted">Payment timeliness</div>
                             <div class="h5 text-warning">{{avg_value3.value3__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
-                            <div class="h6 text-muted">Correttezza del datore di lavoro</div>
+                            <div class="h6 text-muted">Platform's fairness</div>
                             <div class="h5 text-info ">{{avg_value4.value4__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
-                            <div class="h6 text-muted"><a href="{% url 'andamento' platform.id %}"><h6 class="card-title">Andamento nel tempo</h6></a></div>
+                            <div class="h6 text-muted"><a href="{% url 'andamento' platform.id %}"><h6 class="card-title">Rating trands</h6></a></div>
                         </li>
                     </ul>
                 </div>

@@ -136,9 +136,6 @@ def charts(request):
         dataSource1['data'].append(data)
         avg_value1 = 0
         
-
-
-
     dataSource2 = {}
     dataSource2['chart'] = {
         "caption": "",
@@ -256,6 +253,9 @@ class PlatformListView(generic.ListView):
 def recensione_new(request, id):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
+        context = {
+            'platform_page':'active',
+        }
         if form.is_valid():
             titolo = form.cleaned_data['titolo']
             descrizione = form.cleaned_data['descrizione']
@@ -279,15 +279,22 @@ def recensione_new(request, id):
             platform.save()
             
 
-            return render(request, 'success_review.html')
+            return render(request, 'success_review.html',context)
         else:
-            return render(request, 'unsuccess_review.html')
+            return render(request, 'unsuccess_review.html',context)
     else:
         form = ReviewForm(request.POST)
-        return render(request, 'reviews_form.html', {'form': form})
+        context = {
+        'form': form,
+        'platform_page':'active',
+        }
+        return render(request, 'reviews_form.html', context)
 
 def success(request):
-    return render(request, 'platforms.html')
+    context = {
+        'platform_page':'active',
+        }
+    return render(request, 'platforms.html',context )
 
 
 
@@ -309,7 +316,7 @@ def andamento_platform (request, id):
         "name": "Type",
         "type": "string"
         }, {
-        "name": "Sales Value",
+        "name": "Rating Value",
         "type": "number"
         }]
     funds = Recensioni.objects.filter(platform__id=id).all()
@@ -324,10 +331,10 @@ def andamento_platform (request, id):
         z = y[i]
         data = datetime.strptime(z['fields']['data'], "%Y-%m-%dT%H:%M:%S.%f%z")
         data = data.strftime("%d-%b-%y")
-        d1 = [data, "Sicurezza sul lavoro", z['fields']['value1']]
-        d2 = [data, "Trasparenza del contratto", z['fields']['value2']]
-        d3 = [data, "Tempestività dei pagamenti", z['fields']['value3']]
-        d4 = [data, "Correttezza del datore di lavoro", z['fields']['value4']]
+        d1 = [data, "Safety at work", z['fields']['value1']]
+        d2 = [data, "Contracts transparency", z['fields']['value2']]
+        d3 = [data, "Payment timeliness", z['fields']['value3']]
+        d4 = [data, "Platform's fairness", z['fields']['value4']]
         final_data.append(d1)
         final_data.append(d2)
         final_data.append(d3)
@@ -337,14 +344,32 @@ def andamento_platform (request, id):
     
     timeSeries = TimeSeries(fusionTable)
 
-    timeSeries.AddAttribute('chart', '{"paletteColors": "#28a745,#dc3545,#ffc107,#17a2b8"}')
-    timeSeries.AddAttribute('chart', '{"captionPadding": "80"}')
-    timeSeries.AddAttribute('caption', '{"text":"Andamento nel tempo"}')
-    timeSeries.AddAttribute('subcaption', '{"text":""}')
-    timeSeries.AddAttribute('series', '"Type"')
-    timeSeries.AddAttribute('yaxis', '[{"plot":"Rating Value","title":"Sale Value","format":{"prefix":""}}]')
+    """
+    dataSource4['chart'] = {
+        "caption": "",
+            "xAxisName": "Platforms",
+            "yAxisName": "Values",
+            "numberPrefix": "",
+            "theme": "zune",
+            "paletteColors": "5d62b5,29c3be,f2726f",
+            "baseFontSize": "12",
+            "chartLeftMargin": "30",
+            "chartTopMargin": "50",
+            "chartRightMargin": "30",
+            "chartBottomMargin": "50",
+            "xAxisNamePadding": "30",
+            "yAxisNamePadding": "30",
+        }
+    """
+
     
-        # Chart data is passed to the `dataSource` parameter, as dict, in the form of key - value pairs.
+    timeSeries.AddAttribute('chart', '{"paletteColors": "#28a745,#dc3545,#ffc107,#17a2b8"}')
+    timeSeries.AddAttribute('caption', '{"text":"Platform’s rating trands"}')
+    timeSeries.AddAttribute('chartTopMargin', '{"chartTopMargin":"300"}')
+    timeSeries.AddAttribute('subcaption', '{"text":"platform.."}')
+    timeSeries.AddAttribute('series', '"Type"')
+    #timeSeries.AddAttribute('xaxis', '[{"plot":"Rating Value","title":"Sale Value","format":{"prefix":""}}]')
+    
     dataSource5 = OrderedDict()
 
     # The `mapConfig` dict contains key - value pairs data
@@ -358,7 +383,16 @@ def andamento_platform (request, id):
     mapConfig["legendbordercolor"] = "#ffffff"
     mapConfig["legendallowdrag"] = "0"
     mapConfig["legendshadow"] = "0"
-    mapConfig["caption"] = "Website Visits for the month of March 2018"
+    mapConfig["caption"] = "Rating map"
+    mapConfig["subcaption"] = "platform..."
+    mapConfig["chartTopMargin"] = "30"
+    mapConfig["captionHorizontalPadding"] = "70"
+    mapConfig["captionAlignment"] = "left"
+    mapConfig["captionFontSize"] = "16"
+    mapConfig["subcaptionFontSize"] = "12"
+    mapConfig["captionFontBold"] = "1"
+    mapConfig["captionFontColor"] = "#5F5F5F"
+    mapConfig["subcaptionFontColor"] = "#B1B1B1"
     mapConfig["connectorcolor"]= "000000"
     mapConfig["fillalpha"]= "80"
     mapConfig["hovercolor"]= "CCCCCC"
@@ -402,14 +436,12 @@ def andamento_platform (request, id):
     avg = 0
     for r in Recensioni.objects.filter(platform__id=id):
         
-        print("test")
         avg__luogo_value1 = Recensioni.objects.filter(platform__id=id, luogo = r.luogo).aggregate(Avg('value1')).get('value1__avg')
         avg__luogo_value2 = Recensioni.objects.filter(platform__id=id, luogo = r.luogo).aggregate(Avg('value2')).get('value2__avg')
         avg__luogo_value3 = Recensioni.objects.filter(platform__id=id, luogo = r.luogo).aggregate(Avg('value3')).get('value3__avg')
         avg__luogo_value4 = Recensioni.objects.filter(platform__id=id, luogo = r.luogo).aggregate(Avg('value4')).get('value4__avg')
         avg = (avg__luogo_value1+avg__luogo_value2+avg__luogo_value3+avg__luogo_value4)/4
         
-        print("Luogo RATING: " +r.luogo +" Value Rating: " +str(avg))
         
         dataSource5["data"].append({
             "id": r.luogo,
@@ -434,7 +466,7 @@ def andamento_platform (request, id):
     fusionMap = FusionCharts("maps/italy", "myFirstMap", "100%", "500", "myFirstmap-container", "json", dataSource5)
 
 
-    fcChart = FusionCharts("timeseries", "ex1", "100%", "600", "chart-1", "json", timeSeries)
+    fcChart = FusionCharts("timeseries", "ex1", "100%", "450", "chart-1", "json", timeSeries)
 
     context = {
         'platform': platform,
@@ -444,7 +476,8 @@ def andamento_platform (request, id):
         'avg_value3': avg_value3,
         'avg_value4': avg_value4,
         'output5': fcChart.render(),
-        'output6': fusionMap.render()
+        'output6': fusionMap.render(),
+        'platform_page':'active',
     }
    
 
@@ -467,6 +500,7 @@ def recensione_platform (request, id):
         'avg_value2': avg_value2,
         'avg_value3': avg_value3,
         'avg_value4': avg_value4,
+        'platform_page':'active',
     }
 
 

@@ -52,7 +52,7 @@ body{
             
     </ul>
 
-
+    
 
   {% if user.is_authenticated %}
     {% has_topic_notifications user as has_notifications %}
@@ -129,5 +129,7 @@ body{
   {% else %}
     <a style="line-height: 90px;" class="header-link" href="{% url 'login'%}">{% trans "Log in" %}</a>   
   {% endif %}
+
+  
 </header>
 
