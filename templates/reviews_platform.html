@@ -4,10 +4,16 @@
 
 {% block styles %}
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
- 	<link href="{% static 'css/review.css' %}" rel="stylesheet" >
+     <link href="{% static 'css/review.css' %}" rel="stylesheet" >
+     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 {% endblock %}
 
 {% block scripts %}
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/scrolling-nav.js' %}"></script>
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
 {% endblock %}
 
@@ -47,7 +53,8 @@
                             <div class="h5 text-info ">{{avg_value4.value4__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
                         <li class="list-group-item">
-                            <div class="h6 text-muted"><a href="{% url 'andamento' platform.id %}"><h6 class="card-title">Rating trands</h6></a></div>
+                                <i class="fa fa-chart-line"></i>
+                            <div class="h6 text-muted"><a href="{% url 'andamento' platform.id %}"><h6 class="card-title"></h6>Rating trands</h6></a></div>
                         </li>
                     </ul>
                 </div>
@@ -73,7 +80,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{recensione.data |date:'d/m/Y H:i'  }}</div>
+                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> {{recensione.data |date:'d/m/Y H:i'  }}</div>
                             <a class="card-link" href="#">
                                 <h5 class="card-title">{{recensione.titolo}}</h5>
                             </a>
@@ -85,7 +92,7 @@
                     <!-- Post /////-->
                     {% endfor %}
                 {% else %}
-                   Nessuna recensione presente
+                   No reviews present
                 {% endif %}
 
                 <!-- Post /////-->
