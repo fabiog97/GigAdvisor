@@ -86,6 +86,7 @@ MIDDLEWARE = [
     'spirit.core.middleware.PrivateForumMiddleware',
     'djconfig.middleware.DjConfigMiddleware',
 ]
+DISABLE_COLLECTSTATIC=1
 
 HAYSTACK_CONNECTIONS = {
     'default': {
