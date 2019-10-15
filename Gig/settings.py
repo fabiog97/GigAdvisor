@@ -87,6 +87,7 @@ MIDDLEWARE = [
     'djconfig.middleware.DjConfigMiddleware',
 ]
 DISABLE_COLLECTSTATIC=1
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 HAYSTACK_CONNECTIONS = {
     'default': {
@@ -192,4 +193,6 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
