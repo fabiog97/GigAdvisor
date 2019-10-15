@@ -72,6 +72,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -85,8 +86,9 @@ MIDDLEWARE = [
     'spirit.user.middleware.ActiveUserMiddleware',
     'spirit.core.middleware.PrivateForumMiddleware',
     'djconfig.middleware.DjConfigMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-DISABLE_COLLECTSTATIC=1
+
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 HAYSTACK_CONNECTIONS = {
