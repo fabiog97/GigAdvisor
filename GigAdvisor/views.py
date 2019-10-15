@@ -366,7 +366,7 @@ def andamento_platform (request, id):
     timeSeries.AddAttribute('chart', '{"paletteColors": "#28a745,#dc3545,#ffc107,#17a2b8"}')
     timeSeries.AddAttribute('caption', '{"text":"Platform’s rating trands"}')
     timeSeries.AddAttribute('chartTopMargin', '{"chartTopMargin":"300"}')
-    timeSeries.AddAttribute('subcaption', '{"text":"platform.."}')
+    timeSeries.AddAttribute('subcaption', '{"text":""}')
     timeSeries.AddAttribute('series', '"Type"')
     #timeSeries.AddAttribute('xaxis', '[{"plot":"Rating Value","title":"Sale Value","format":{"prefix":""}}]')
     
@@ -384,7 +384,6 @@ def andamento_platform (request, id):
     mapConfig["legendallowdrag"] = "0"
     mapConfig["legendshadow"] = "0"
     mapConfig["caption"] = "Rating map"
-    mapConfig["subcaption"] = "platform..."
     mapConfig["chartTopMargin"] = "30"
     mapConfig["captionHorizontalPadding"] = "70"
     mapConfig["captionAlignment"] = "left"

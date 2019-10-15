@@ -3,9 +3,11 @@
 {% block head %}
 <head>
   <meta charset="utf-8">
-  <title>{% block title %}Gig Advisor{% endblock %}</title>
+  
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+    
+    <link rel="shortcut icon" href="/media/favicon1.png">
     <meta name="author" content="Fabio Grauso">
     {% block styles %}
     
@@ -53,10 +55,10 @@
 }
 </style>
         {% block nav %}
-        <nav style="background-color: 181818; color: white" class="navbar fixed-top navbar-expand-lg">
+        <nav style="background-color: #181818; color: white" class="navbar fixed-top navbar-expand-lg">
             
           <a class="navbar-brand" href="{% url 'home' %}">
-              <img src="/media/GigAdvisor2-versione1.png" width="150"  class="d-inline-block align-top" alt="">
+              <img src="/media/GigAdvisor3-v.1.png" width="150"  class="d-inline-block align-top" alt="">
             </a>
             <button style="border-color:white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon">   
@@ -72,14 +74,19 @@
               <li class="nav-item {{ home_page }}">
                 <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only"></span></a>
               </li>
-                <li class="nav-item {{ platform_page }}">
-                <a class="nav-link" href="{% url 'platforms' %}">Platforms <span class="sr-only"></span></a>
+                <li class="nav-item {{ platform_page }}">  
+                <a class="nav-link" href="{% url 'platforms' %}">Reviews <span class="sr-only"></span></a>
               </li>
               <li class="nav-item {{ charts_page }}">
                 <a class="nav-link" href="{% url 'charts' %}">Ratings</a>
               </li>
               <li class="nav-item ">
-                  <a class="nav-link" href="{% url 'spirit:index' %}">Forum</a>
+                  {% if user.is_authenticated %}
+                  <a class="nav-link" href="{% url 'spirit:index' %}">Community</a>
+                  {% else %}
+                  <a class="nav-link" href="{% url 'login' %}">Community</a>
+                  {% endif %}
+                  
                 </li>
             </ul>
           </div>

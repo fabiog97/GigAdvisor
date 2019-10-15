@@ -29,7 +29,7 @@ body{
 <header class="header js-tabs-container" style="background-color:#181818;">
     <ul class="header-tabs" style="line-height: 75px; float: left">
         <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="/media/GigAdvisor2-versione1.png" width="150"  class="d-inline-block align-top" alt=""></a>
+            <img src="/media/GigAdvisor3-v.1.png" width="150"  class="d-inline-block align-top" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -38,15 +38,15 @@ body{
             <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only"></span></a>
           </li>
             <li class="nav-item {{ platform_page }}">
-            <a class="nav-link" href="{% url 'platforms' %}">Platforms <span class="sr-only"></span></a>
+            <a class="nav-link" href="{% url 'platforms' %}">Reviews <span class="sr-only"></span></a>
           </li>
           <li class="nav-item {{ charts_page }}">
-            <a class="nav-link" href="{% url 'charts' %}">Charts</a>
+            <a class="nav-link" href="{% url 'charts' %}">Ratings</a>
           </li>
          
         
           <li class="nav-item active">
-              <a class="nav-link" href="{% url 'spirit:index' %}">Forum</a>
+              <a class="nav-link" href="{% url 'spirit:index' %}">Community</a>
           </li>    
             
     </ul>

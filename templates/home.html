@@ -24,7 +24,18 @@
       interval: 1000,
       
     });
+
+    $("#alert").hover(function() {
+            alert("hello");
+        }); 
+    
+
   });
+
+  
+    
+        
+
 </script>
 
     
@@ -129,7 +140,7 @@ a{
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner" id="home">
       <div class="carousel-caption" >
-          <img src="/media/GigAdvisor2.png" width="98%" class="d-inline-block align-top" alt="">
+          <img src="/media/GigAdvisor3.png" width="98%" class="d-inline-block align-top" alt="">
           <div id="wrapper"> 
             <a style="color:#00aac9; font-size: 70" class="js-scroll-trigger" href="#about"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
             <p class="text">Learn more</p>
@@ -236,7 +247,7 @@ a{
         </div>
           <div class="col-lg-4" id="div3" >
           <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-              <a href="{% url 'spirit:index' %}" id="div3">
+              <a href="{% url 'login' %}" id="div3">
               <img src="/media/icon/Forum512.png"  width="50%">
               <br>
               <h3>Connect With Others</h3>
@@ -263,14 +274,26 @@ a{
     <div class="row no-gutters">
       <div class="col-lg-6  showcase-text" id = "overview" style="padding: 5%; background-color:white; margin-top: 100px;margin-bottom: 100px; margin-left: 80px;color:black">
         <h2 style="color:#00aac9">Overview</h2>
-        <p class="lead sm-0 text-justify">In the cloud-based society, where the vast majority of social, economic and personal
-            interactions is mediated by information communication technology (ICT), technology is no
-            longer simply a subject of regulation but is becoming an integral part of the regulatory process.
-            Techno-regulation, the “intentional influencing of individuals’ behavior by building norms into
-            technological devices,” is inspiring new ways to support legal safeguards through hardware and
-            software tools, technical solutions allowing the creation of legal relations, hampering breaches of
-            law and even promoting norm compliance.</p>
-      </div>
+        <p style="font-weight: lighter;font-family:Helvetica; font-size:18;line-height:25px"class="lead sm-0 text-justify">
+          In the cloud-based society, where ICT mediates most of the social, economic, and personal interactions, technology is no longer merely a subject of regulation but is becoming an integral part of the regulatory process.<br>
+          
+          &nbsp;&nbsp;Techno-regulation, the <em>“intentional influencing of individuals’ behavior by building norms into technological devices,”</em> <a style="color:#00aac9"onmousemove="alert('Van den Berg, B., & Leenes, R. E. (2013). Abort, retry, fail: scoping techno-regulation and other techno-effects. In Human law and computer law: Comparative perspectives (pp. 67-87). Springer, Dordrecht.')">(Leenes 2013)</a>, is inspiring new ways to support legal safeguards through hardware and software tools, technical solutions allowing to create legally relevant relations, hamper breaches of law and promote norm compliance. 
+          <br>
+          &nbsp;&nbsp;Stemming from a research in the area of computational legal studies, Gig Advisor is an experimental web application dealing with the techno-regulation paradigm and its potential application in the world of Digital Labor Platforms.
+          <br>
+          &nbsp;&nbsp;The goal of the initiative is twofold. On the one hand, it aims at exploring regulatory effects that can be induced, in the digital platform market, by tools exploiting reputational mechanisms. On the other hand, it aims to gather data to be used in computational social science research on the gig economy. The the tool, still under development, currently encompasses three basic components:
+          <ul style="font-family:Helvetica; font-weight: lighter; font-size: 18">
+              <li>A module allowing crowd workers  to <a style="color: #06849bfb">evaluate digital labour platforms</a>  they work for, according to a series of predefined criteria (e.g. employer fairness, payment timeliness).</li>
+
+              <li>A module for the <a style="color: #06849bfb">real-time analysis</a> and visualization of data resulting from the assessments made by crowd workers.</li>
+    
+              <li>A forum allowing crowd workers to <a style="color: #06849bfb">discuss issues and share ideas</a> about their working experience.</li>
+
+
+          </ul>
+          
+
+        </div>
       
     </div>
 </section>
@@ -289,27 +312,27 @@ a{
 </section>
 <div id="wrapper">
     <a style="color:#00aac9; font-size: 70" class="js-scroll-trigger" href="#team"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-    <p class="text">Team</p>
+    <p style="color:#00aac9;"class="text">Team</p>
   </div>
 {% endif %}
 
 <!-- Testimonials -->
 <section  style="background-color:white" class="testimonials text-center bg">
   <div class="container" id="team">
-    <h2 class="mb-5">Team</h2>
+    <h2 style="color:#00aac9;"class="mb-5">Team</h2>
     <div class="row">
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5 mb-lg-5" id="team">
           <img class="img-fluid rounded-circle mb-3" src="/media/team/nicola.jpg" alt="">
           <a href="mailto:lettieri.nicola@gmail.com"><h5>Nicola Lettieri</h5></a>
-          <p class="font-weight-light mb-0">Researcher at ISFOL, Rome, is adjunct professor of Legal informatics at the University of Sannio and member of ISISLab Research Lab</p>
+          <p class="font-weight-light mb-0">Researcher at INAPP, Rome.<br>Adjunct professor of Legal informatics at the University of Sannio</p>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5 mb-lg-5" id="team">
-          <img class="img-fluid rounded-circle mb-3" src="/media/team/Malandrino.jpg" alt="">
+          <img class="img-fluid rounded-circle mb-3" src="/media/team/malandrino.jpg" alt="">
           <a href="mailto:dmalandrino@unisa.it"><h5>Delfina Malandrino</h5></a>
-          <p class="font-weight-light mb-0">Associate professor fellow at the Department of Computer Science of the University of Salerno and member of ISISLab Research Lab</p>
+          <p class="font-weight-light mb-0">Associate professor at the Department of Computer Science of the University of Salerno and member of ISISLab Research Lab</p>
         </div>
       </div>
       <div class="col-lg-4">

@@ -11,14 +11,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-
+ 
   <link href="{% static 'spirit/stylesheets/styles.all.min.css' %}" rel="stylesheet" >
+  <link href="{% static 'css/album.css' %}" rel="stylesheet">
+
+  
 
 
   <script src="{% static 'spirit/scripts/all.min.js' %}"></script>
-  
-
-  
 
 
 
@@ -52,12 +52,27 @@
 
 
 </head>
-
+{% if user.is_authenticated %}
 {% include 'spirit/_header.html' %}
 
 {% render_messages messages %}
-{% block content %}{% endblock %}
+
+    <div class="container" align="center">
+        <img src="/media/icon/Forum512.png"  width="14%">
+      <h1 style="font-family:Arial;font-weight:bold;color: #c027bf;"class="jumbotron-heading">Connect with others</h1>
+      <p style="font-family:Arial;"class="lead text-muted">This module allowes crowd workers to discuss issues and share ideas about their working experience </p>
+          
+    </div>
+
+{% block content %}
+
+  {% endblock %}
 {% include 'spirit/_footer.html' %}
+{% else%}
+{% include 'page_not_found.html' %}
+{% endif %}
+
+
 
 </body>
 

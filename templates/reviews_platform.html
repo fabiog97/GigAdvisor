@@ -7,6 +7,18 @@
      <link href="{% static 'css/review.css' %}" rel="stylesheet" >
      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+     <style>
+     #andamento:hover a{
+         text-decoration: none;
+        color: black;
+     }
+
+     #andamento{
+         text-align: center;
+     }
+     
+     
+     </style>
 {% endblock %}
 
 {% block scripts %}
@@ -52,9 +64,8 @@
                             <div class="h6 text-muted">Platform's fairness</div>
                             <div class="h5 text-info ">{{avg_value4.value4__avg | default_if_none:"0" | floatformat:2}}</div>
                         </li>
-                        <li class="list-group-item">
-                                <i class="fa fa-chart-line"></i>
-                            <div class="h6 text-muted"><a href="{% url 'andamento' platform.id %}"><h6 class="card-title"></h6>Rating trands</h6></a></div>
+                        <li class="list-group-item" id="andamento">
+                            <div class="h6 text-muted"><a href="{% url 'andamento' platform.id %}"><h6 class="card-title">Rating trands</h6></a></div>
                         </li>
                     </ul>
                 </div>
