@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'spirit.comment.history',
     'spirit.comment.like',
     'spirit.comment.poll',
+    'spirit.spiritsearch',
     'djconfig',
     'haystack',
 ]
@@ -123,7 +124,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'spirit.djconfig.context_processors.config',
+                'djconfig.context_processors.config',
             ],
         },
 
