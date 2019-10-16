@@ -8,4 +8,5 @@ django-infinite-scroll-pagination>=0.2.0,<0.3
 django-djconfig>=0.8.0,<0.11
 pytz
 gunicorn
+whitenoise
 django-heroku
