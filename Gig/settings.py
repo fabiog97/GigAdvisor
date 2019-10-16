@@ -90,6 +90,10 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+MIDDLEWARE_CLASSES = [
+    'djconfig.middleware.DjConfigMiddleware',
+]
+
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 HAYSTACK_CONNECTIONS = {
