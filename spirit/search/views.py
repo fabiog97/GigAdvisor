@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 from haystack.views import SearchView as BaseSearchView
-from django.djconfig import config
+from djconfig import config
 
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
