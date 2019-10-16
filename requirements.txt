@@ -13,3 +13,4 @@ django-bootstrap-form
 django-heroku
 django-chartjs
 spirit
+mysqlclient
