@@ -16,3 +16,4 @@ spirit
 mysqlclient
 simplejson
 requests
+dj-database-url
