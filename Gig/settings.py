@@ -138,10 +138,10 @@ WSGI_APPLICATION = 'Gig.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gig_advisor',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'NAME': 'Efw8jMHvhc',
+        'USER': 'Efw8jMHvhc',
+        'PASSWORD': 'xW0reilctF',
+        'HOST': 'remotemysql.com',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
