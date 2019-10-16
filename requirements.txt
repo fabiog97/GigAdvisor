@@ -15,3 +15,4 @@ django-chartjs
 spirit
 mysqlclient
 simplejson
+requests
