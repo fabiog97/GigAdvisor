@@ -14,3 +14,4 @@ django-heroku
 django-chartjs
 spirit
 mysqlclient
+simplejson
