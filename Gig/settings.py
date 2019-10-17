@@ -153,6 +153,9 @@ DATABASES = {
 }
 
 
+DATABASES['default'] = dj_database_url.config(default='mysql://Efw8jMHvhc:xW0reilctF@remotemysql.com:3306/Efw8jMHvhc')
+
+DATABASES['default'] = dj_database_url.parse('mysql://Efw8jMHvhc:xW0reilctF@remotemysql.com:3306/Efw8jMHvhc', conn_max_age=100)
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=100, ssl_require=True)
 
