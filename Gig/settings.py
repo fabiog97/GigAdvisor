@@ -161,10 +161,10 @@ DATABASES = {
         'PASSWORD': 'xW0reilctF',
         'HOST': 'remotemysql.com',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
-        'CONN_MAX_AGE': 100,
+        'CONN_MAX_AGE': 500,
     }
 }
-DATABASES['default'] = dj_database_url.config(conn_max_age=100, ssl_require=True)
+DATABASES['default'] = dj_database_url.config(conn_max_age=100)
 
 #DATABASES['default'] =  dj_database_url.config()
 #DATABASES['default'] = dj_database_url.config(conn_max_age=100, ssl_require=True)
