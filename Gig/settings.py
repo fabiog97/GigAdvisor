@@ -164,7 +164,7 @@ DATABASES = {
         'CONN_MAX_AGE': 100,
     }
 }
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'] = dj_database_url.config(conn_max_age=100, ssl_require=True)
 
 #DATABASES['default'] =  dj_database_url.config()
 #DATABASES['default'] = dj_database_url.config(conn_max_age=100, ssl_require=True)
