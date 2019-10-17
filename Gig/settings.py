@@ -140,6 +140,19 @@ WSGI_APPLICATION = 'Gig.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gig_advisor',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -153,11 +166,8 @@ DATABASES = {
 }
 
 
-DATABASES['default'] = dj_database_url.config(default='mysql://Efw8jMHvhc:xW0reilctF@remotemysql.com:3306/Efw8jMHvhc')
-
-DATABASES['default'] = dj_database_url.parse('mysql://Efw8jMHvhc:xW0reilctF@remotemysql.com:3306/Efw8jMHvhc', conn_max_age=100)
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=100, ssl_require=True)
+#DATABASES['default'] =  dj_database_url.config()
+#DATABASES['default'] = dj_database_url.config(conn_max_age=100, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
