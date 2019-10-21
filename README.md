@@ -1,4 +1,6 @@
 # GigAdvisor
+The web-application is available online at: 'https://gigadvisor.herokuapp.com/'
+
 
 ## Setup
 
