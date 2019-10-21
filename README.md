@@ -12,7 +12,7 @@ $ cd Gig
 
 Create a virtual environment to install dependencies in and activate it:
 
-```sh
+
 $ virtualenv --no-site-packages env
 $ source env/bin/activate
 ```
