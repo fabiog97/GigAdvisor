@@ -28,12 +28,19 @@
     $("#alert").hover(function() {
             alert("hello");
         }); 
-    
-
-  });
+    });
 
   
-    
+
+  $(document).ready(function() {
+    $('.carousel .carousel-caption').css('zoom', $('.carousel').width()/1300);
+  });
+
+  $(window).resize(function() {
+    $('.carousel .carousel-caption').css('zoom', $('.carousel').width()/1300);
+  });
+
+
         
 
 </script>
@@ -73,6 +80,10 @@
 a{
   color: #000000;
   
+}
+
+#image2{
+  display: none;
 }
 
 
@@ -132,6 +143,11 @@ a{
   text-decoration: none;
 }
 
+#image1{
+     display: block;
+   }
+
+
 
   /* Make the image fully responsive */
   .carousel-inner img {
@@ -150,27 +166,45 @@ a{
     .carousel-inner img {
     width: 100%;
     height: 70%;
-    }
-    
+    } 
   }
   @media screen and (max-width: 600px) {
     .carousel-inner img {
     width: 80%;
     height: 60%;
     }
+
+    
+    #image1{
+     display: none;
+   }
+
+   #image2{
+     display: block;
+     display: inline;
+   }
+    
+
+    
   }
   @media screen and (max-width: 500px) {
     .carousel-inner img {
     width: 80%;
     height: 50%;
     }
+    
+    
+    
   }
+
+ 
 }
 
 </style>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-caption" id="home" >
-        <img src="/media/GigAdvisor3.png" width="98%" class="d-inline-block align-top" alt="">
+    <div class="carousel-caption" id="home">
+        <img id="image1" src="/media/GigAdvisor3.png" width="100%" class="align-top" alt="">
+        <img id="image2" src="/media/GigAdvisorLogoCentered.png" width="65%"class="align-top " alt="">
         <div id="wrapper"> 
           <a style="color:#00aac9; font-size: 70" class="js-scroll-trigger" href="#about"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
           <p class="text">Learn more</p>
@@ -238,7 +272,7 @@ a{
 <section class="features-icons bg-light text-center" id = "about">
   <div class="container">
     <div class="row">
-        <div class="col-lg-12 column-in-center col-md-offset-3"><p style="font-size: 40"class="display-4">GigAdvisor: a tool to...</p></div>
+      <div class="col-lg-12 column-in-center col-md-offset-3"><p style="font-size: 30"class="display-4">GigAdvisor: a tool to...</p></div>
     </div>
     <div class="row mt-5">
       <div class="col-lg-4" id="div2" >
@@ -285,7 +319,7 @@ a{
 <section class="features-icons bg-light text-center" id = "about">
     <div class="container">
         <div class="row"> 
-            <div class="col-lg-12 column-in-center col-md-offset-3"><p style="font-size: 40"class="display-4">GigAdvisor: a tool to...</p></div>
+            <div class="col-lg-12 column-in-center col-md-offset-3"><p style="font-size: 30"class="display-4">GigAdvisor: a tool to...</p></div>
         </div>
       <div class="row mt-5">
           <div class="col-lg-4" id="div2" >
