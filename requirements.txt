@@ -16,4 +16,5 @@ spirit
 mysqlclient
 simplejson
 requests
+DateTime
 dj-database-url
