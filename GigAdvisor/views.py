@@ -329,7 +329,7 @@ def andamento_platform (request, id):
     
     for i in range(len(y)):
         z = y[i]
-        data = datetime.strptime(z['fields']['data'], '%Y-%m-%dT%H:%M:%S')
+        data = datetime.strptime(z['fields']['data'], '%Y-%m-%dT%H:%M:%S.%f%Z')
         data = data.strftime("%d-%b-%y")
         d1 = [data, "Safety at work", z['fields']['value1']]
         d2 = [data, "Contracts transparency", z['fields']['value2']]
