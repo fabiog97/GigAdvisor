@@ -17,4 +17,5 @@ mysqlclient
 simplejson
 requests
 DateTime
+datetime
 dj-database-url
