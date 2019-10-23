@@ -329,7 +329,7 @@ def andamento_platform (request, id):
     
     for i in range(len(y)):
         z = y[i]
-        data = datetime.strptime(z['fields']['data'], "%Y-%m-%dT%H:%M:%S.%f%z")
+        data = datetime.strptime(z['fields']['data'], "%Y-%m-%dT%H:%M:%S.%f%")
         data = data.strftime("%d-%b-%y")
         d1 = [data, "Safety at work", z['fields']['value1']]
         d2 = [data, "Contracts transparency", z['fields']['value2']]
@@ -364,7 +364,7 @@ def andamento_platform (request, id):
 
     
     timeSeries.AddAttribute('chart', '{"paletteColors": "#28a745,#dc3545,#ffc107,#17a2b8"}')
-    timeSeries.AddAttribute('caption', '{"text":"Platform’s rating trands"}')
+    timeSeries.AddAttribute('caption', '{"text":"Platform’s rating trends"}')
     timeSeries.AddAttribute('chartTopMargin', '{"chartTopMargin":"300"}')
     timeSeries.AddAttribute('subcaption', '{"text":""}')
     timeSeries.AddAttribute('series', '"Type"')
