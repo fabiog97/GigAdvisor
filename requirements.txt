@@ -16,6 +16,5 @@ spirit
 mysqlclient
 simplejson
 requests
-DateTime
-datetime
+python-datetime-tz
 dj-database-url
