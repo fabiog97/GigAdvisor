@@ -140,7 +140,7 @@ WSGI_APPLICATION = 'Gig.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -164,7 +164,7 @@ DATABASES = {
         'CONN_MAX_AGE': 100,
     }
 }
-
+'''
 
 #DATABASES['default'] =  dj_database_url.config()
 #DATABASES['default'] = dj_database_url.config(conn_max_age=100, ssl_require=True)
