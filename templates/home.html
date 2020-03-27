@@ -14,6 +14,7 @@
 {% block scripts %}
 
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'js/scrolling-nav.js' %}"></script>
   <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
@@ -40,32 +41,10 @@
     $('.carousel .carousel-caption').css('zoom', $('.carousel').width()/1300);
   });
 
-$(function(){
-var overlay = $('<div id="overlay"></div>');
-overlay.show();
-overlay.appendTo(document.body);
-$('.popup').show();
-$('.close').click(function(){
-$('.popup').hide();
-overlay.appendTo(document.body).remove();
-return false;
-});
-
-
- 
-
-$('.x').click(function(){
-$('.popup').hide();
-overlay.appendTo(document.body).remove();
-return false;
-});
-});
-
-        
+      
 
 </script>
 
-  
   
 {% endblock %}
 
@@ -125,13 +104,8 @@ display: none;
 .cnt223 a{
 text-decoration: none;
 }
-.popup{
-width: 100%;
-margin: 0 auto;
-display: none;
-position: fixed;
-z-index: 101;
-}
+
+
 .cnt223{
 min-width: 500px;
 width: 500px;
@@ -281,27 +255,11 @@ cursor: pointer;
       min-height: 150px;
       
     }
-    
-    
-    
   }
-
-  
- 
 }
 
 </style>
-<div class='popup'>
-  <div class='cnt223'>
-    <h2><i  class="fa fa-exclamation-triangle"></i></i>  Important Notice</h2>
-  <p>
-  This is a prototype of an experimental web-application under development for pure research purposes.<br> Data presented in following pages are fictitious.
-  <br/>
-  <br/>
-  <a href='' class='close'>Close</a>
-  </p>
-  </div>
-  </div>
+
 
 
   
