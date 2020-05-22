@@ -156,10 +156,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Efw8jMHvhc',
-        'USER': 'Efw8jMHvhc',
-        'PASSWORD': 'xW0reilctF',
-        'HOST': 'remotemysql.com',   # Or an IP Address that your DB is hosted on
+        'NAME': 'sql7342549',
+        'USER': 'sql7342549',
+        'PASSWORD': 'sYnHuQQzNI',
+        'HOST': 'sql7.freemysqlhosting.net',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'CONN_MAX_AGE': 100,
     }
