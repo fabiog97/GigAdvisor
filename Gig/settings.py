@@ -140,7 +140,7 @@ WSGI_APPLICATION = 'Gig.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -161,11 +161,10 @@ DATABASES = {
         'PASSWORD': 'sYnHuQQzNI',
         'HOST': 'sql7.freemysqlhosting.net',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
-        'CONN_MAX_AGE': 100,
     }
 }
 
-
+'''
 #DATABASES['default'] =  dj_database_url.config()
 #DATABASES['default'] = dj_database_url.config(conn_max_age=100, ssl_require=True)
 
