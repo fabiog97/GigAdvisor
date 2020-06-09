@@ -41,7 +41,26 @@
     $('.carousel .carousel-caption').css('zoom', $('.carousel').width()/1300);
   });
 
-      
+  $(function(){
+    var overlay = $('<div id="overlay"></div>');
+    overlay.show();
+    overlay.appendTo(document.body);
+  $('.popup').show();
+  $('.close').click(function(){
+  $('.popup').hide();
+    overlay.appendTo(document.body).remove();
+    return false;
+});
+
+
+
+
+$('.x').click(function(){
+$('.popup').hide();
+overlay.appendTo(document.body).remove();
+return false;
+});
+});  
 
 </script>
 
@@ -105,6 +124,13 @@ display: none;
 text-decoration: none;
 }
 
+.popup{
+width: 100%;
+margin: 0 auto;
+display: none;
+position: fixed;
+z-index: 101;
+}
 
 .cnt223{
 min-width: 500px;
@@ -261,7 +287,17 @@ cursor: pointer;
 </style>
 
 
-
+<div class='popup'>
+  <div class='cnt223'>
+    <h2><i  class="fa fa-exclamation-triangle"></i></i>  Important Notice</h2>
+  <p>
+  This is a prototype of an experimental web-application under development for pure research purposes.<br> Data presented in following pages are fictitious.
+  <br/>
+  <br/>
+  <a href='' class='close'>Close</a>
+  </p>
+  </div>
+  </div>
   
 <div style="margin-top: 5%"id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-caption" >
